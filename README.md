@@ -1,14 +1,5 @@
 # Entities
 
-## Orders
-- OrderId INT **(PK)** NOT NULL UNIQUE
-- DishID INT **(FK)**
-- TableID INT **(FK)**
-- Name VARCHAR NOT NULL
-- OrderDate DATE NULL _**[DEFAULT SYSDATETIME()]**_
-- IsComplete BIT NULL _**[DEFAULT 1]**_
-- IsActive BIT NULL _**[DEFAULT 0]**_
-
 ## Dishs
 - DishID INT **(PK)** NOT NULL UNIQUE
 - CategoryID INT NULL **(FK)**
@@ -44,10 +35,19 @@
 - CreationDate DATE NULL _**[DEFAULT SYSDATETIME()]**_
 - IsActive BIT NULL _**[DEFAULT 0]**_
 
+## Orders
+- OrderId INT **(PK)** NOT NULL UNIQUE
+- DishID INT **(FK)**
+- TableID INT **(FK)**
+- Name VARCHAR NOT NULL
+- OrderDate DATE NULL _**[DEFAULT SYSDATETIME()]**_
+- IsComplete BIT NULL _**[DEFAULT 1]**_
+- IsActive BIT NULL _**[DEFAULT 0]**_
+
 ## Order Complete
 - OrderID INT **(FK)**
-- ClientName
 - PaymentID INT **(FK)**
+- ClientName
 - OrderDate DATE NULL _**[DEFAULT SYSDATETIME()]**_
 - IsActive BIT NULL _**[DEFAULT 0]**_
 
