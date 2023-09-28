@@ -4,8 +4,7 @@ import { Repository } from "typeorm"
 import { Table } from "../entities/table.entity";
 import { CreateTableDto } from "../dtos/create-table.dto";
 import { UpdateTableDto } from "../dtos/update-table.dto";
-import { Dish } from "src/Dish/entities/dish.entity";
-import { DishService } from "src/Dish/services/dish.service";
+import { DishService } from "src/dishes/services/dish.service";
 
 @Injectable()
 export class TableService {

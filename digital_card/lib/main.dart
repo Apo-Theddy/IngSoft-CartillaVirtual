@@ -1,6 +1,9 @@
 import 'package:digital_card/screens/home_screen.dart';
+
 import 'package:flutter/material.dart';
 import "package:get/get.dart";
+
+// final socket = SocketService();
 
 void main() {
   runApp(const MainApp());

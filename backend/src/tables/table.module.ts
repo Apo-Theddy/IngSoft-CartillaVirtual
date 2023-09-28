@@ -3,8 +3,8 @@ import { TypeOrmModule } from "@nestjs/typeorm"
 import { Table } from "./entities/table.entity";
 import { TableService } from "./services/table.service";
 import { TableController } from "./controllers/table.controller";
-import { Dish } from "src/Dish/entities/dish.entity";
-import { DishModule } from "src/Dish/dish.module";
+import { DishModule } from "src/dishes/dish.module";
+import { Dish } from "src/dishes/entities/dish.entity";
 
 @Module({
     imports: [TypeOrmModule.forFeature([Table, Dish]), DishModule],

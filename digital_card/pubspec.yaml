@@ -15,8 +15,12 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^2.0.0
   flutter_hooks: ^0.20.1
+  awesome_bottom_bar: ^1.2.4
+  http: ^1.1.0
   intl: ^0.18.1
   get: ^4.6.6 
+  socket_io_client: ^2.0.3+1
+  carousel_slider: ^4.2.1
 
 flutter:
   uses-material-design: true

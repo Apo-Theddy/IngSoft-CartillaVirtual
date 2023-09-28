@@ -1,13 +1,18 @@
+import 'package:digital_card/models/table_model.dart';
+import 'package:digital_card/screens/table_content_screen.dart';
 import 'package:flutter/material.dart';
+import "package:get/get.dart";
 
 class TableCard extends StatelessWidget {
-  const TableCard({super.key});
+  const TableCard({super.key, required this.table});
+  final TableModel table;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print("xd");
+        Get.to(() => TableContentScreen(tableID: table.tableID),
+            transition: Transition.cupertino);
       },
       child: Container(
           margin: const EdgeInsets.all(10),
@@ -15,7 +20,7 @@ class TableCard extends StatelessWidget {
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                     color: Colors.black26,
                     blurRadius: 6,
@@ -26,7 +31,7 @@ class TableCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset("assets/table-img.jpg", height: 100),
-              Text("Mesa")
+              Text(table.tableName)
             ],
           )),
     );

@@ -1,5 +1,4 @@
-import { Dish } from "src/Dish/entities/dish.entity"
-import { Order } from "src/Order/entities/order.entity"
+import { Order } from "src/orders/entities/order.entity"
 import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, OneToMany, OneToOne } from "typeorm"
 
 @Entity({ name: "Tables" })

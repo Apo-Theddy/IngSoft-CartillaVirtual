@@ -1,15 +1,17 @@
 import 'package:digital_card/cards/dish_card.dart';
 import 'package:digital_card/components/categories_component.dart';
+import 'package:digital_card/models/dish_model.dart';
+import 'package:digital_card/services/dish_service.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import "package:flutter_hooks/flutter_hooks.dart";
 
-class DishesScreen extends StatelessWidget {
+final dishService = DishService();
+
+class DishesScreen extends HookWidget {
   const DishesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final CartController cartController = Get.put(CartController());
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -28,24 +30,28 @@ class DishesScreen extends StatelessWidget {
               const Text("Dishes",
                   style: TextStyle(fontSize: 30, fontFamily: "Harlowsi")),
               Expanded(
-                child: ListView.builder(
-                  shrinkWrap: true, // Ajusta la altura automáticamente
-                  itemCount: 5,
-                  itemBuilder: (BuildContext context, int index) {
-                    return DishCard(id: index);
-                  },
-                ),
+                child: FutureBuilder(
+                    future: dishService.getDishs(),
+                    builder: (ctx, AsyncSnapshot snap) {
+                      if (snap.connectionState == ConnectionState.waiting) {
+                        return const Center(child: CircularProgressIndicator());
+                      } else if (snap.hasError) {
+                        return const Center(
+                            child: Text(
+                                "Ocurrio un error al obtener los platillo"));
+                      }
+                      return ListView.builder(
+                        shrinkWrap: true, // Ajusta la altura automáticamente
+                        itemCount: snap.data.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          final dish = snap.data[index];
+                          return DishCard(dish: dish);
+                        },
+                      );
+                    }),
               )
             ],
           )),
     );
-  }
-}
-
-class CartController extends GetxController {
-  List<int> dishes = [];
-
-  void addDish(int dish) {
-    dishes.add(dish);
   }
 }

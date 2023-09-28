@@ -1,7 +1,9 @@
+import 'package:digital_card/models/category_model.dart';
 import 'package:flutter/material.dart';
 
 class CategoryCard extends StatelessWidget {
-  const CategoryCard({super.key});
+  const CategoryCard({super.key, required this.category});
+  final Category category;
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +22,11 @@ class CategoryCard extends StatelessWidget {
               BoxShadow(
                   color: Colors.black12, blurRadius: 3, offset: Offset(0, 2))
             ]),
-        child: const Column(
+        child: Column(
           children: [
-            Icon(Icons.food_bank, size: 55),
+            const Icon(Icons.food_bank, size: 55),
             Text(
-              "Bebidas Heladas",
+              category.categoryName,
               textAlign: TextAlign.center,
             )
           ],

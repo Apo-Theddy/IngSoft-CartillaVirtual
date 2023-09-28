@@ -1,15 +1,26 @@
+import 'package:digital_card/cards/table_dish_card.dart';
+import "package:digital_card/cards/table_card.dart";
+import "package:digital_card/models/dish_model.dart";
+import "package:digital_card/services/dish_service.dart";
+import "package:digital_card/services/tables_service.dart";
 import 'package:flutter/material.dart';
 import "package:flutter_hooks/flutter_hooks.dart";
 import "package:intl/intl.dart";
+import "package:carousel_slider/carousel_slider.dart";
+
+final tablesService = TablesService();
 
 class DishContentScreen extends HookWidget {
-  const DishContentScreen({super.key, required this.id});
-  final int id;
+  const DishContentScreen({super.key, required this.dish});
+  final Dish dish;
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     final countDish = useState<int>(1);
-    final totalPrice = countDish.value * 15.5; // Calcula el precio sin formato
+    final totalPrice =
+        countDish.value * dish.unitPrice; // Calcula el precio sin formato
     final formatPrice = NumberFormat("#,##0.00", 'es').format(totalPrice);
 
     return Scaffold(
@@ -27,11 +38,10 @@ class DishContentScreen extends HookWidget {
             Container(
                 alignment: Alignment.center,
                 height: 300,
-                child: Hero(
-                    tag: id, child: Image.asset("assets/pollo-brasa.png"))),
+                child: verifyImage(size)),
             // Dish information
-            const Text("1/4 De Pollo a la brasa",
-                style: TextStyle(
+            Text(dish.dishName,
+                style: const TextStyle(
                     fontSize: 21,
                     fontWeight: FontWeight.bold,
                     color: Color(0xff183365))),
@@ -61,7 +71,7 @@ class DishContentScreen extends HookWidget {
                                 )),
                             onPressed: () =>
                                 {if (countDish.value > 1) countDish.value--},
-                            child: Container(
+                            child: SizedBox(
                               height: 50,
                               child:
                                   Icon(Icons.remove, color: Color(0xff183365)),
@@ -110,7 +120,43 @@ class DishContentScreen extends HookWidget {
             const SizedBox(height: 20),
             InkWell(
               onTap: () {
-                print("add to card");
+                showModalBottomSheet(
+                    backgroundColor: const Color(0XFFFFFEFE),
+                    context: context,
+                    builder: (_) => Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Container(
+                                margin: const EdgeInsets.all(10),
+                                child: const Text("Mesas",
+                                    style: TextStyle(
+                                        fontSize: 30, fontFamily: "Harlowsi"))),
+                            SizedBox(
+                              height: 100,
+                              child: FutureBuilder(
+                                  future: tablesService.getTables(),
+                                  builder: (_, AsyncSnapshot snap) {
+                                    if (snap.connectionState ==
+                                        ConnectionState.waiting) {
+                                      return const Center(
+                                          child: CircularProgressIndicator());
+                                    } else if (snap.hasError) {
+                                      return const Center(
+                                          child: Text(
+                                              "Ocurrio un error al obtener las mesas"));
+                                    }
+                                    return ListView.builder(
+                                      scrollDirection: Axis.horizontal,
+                                      itemCount: snap.data.length,
+                                      itemBuilder: (_, i) {
+                                        final table = snap.data[i];
+                                        return CardTableDish(table: table);
+                                      },
+                                    );
+                                  }),
+                            )
+                          ],
+                        ));
               },
               child: Container(
                 alignment: Alignment.center,
@@ -130,14 +176,38 @@ class DishContentScreen extends HookWidget {
             ),
             const SizedBox(height: 25),
             const Text("Description",
-                style: TextStyle(color: Color(0xff183365), fontSize: 19)),
+                style: TextStyle(
+                    color: Color(0xff183365),
+                    fontSize: 19,
+                    fontWeight: FontWeight.bold)),
             const SizedBox(height: 10),
-            const Text(
-                "Nulla deserunt voluptate sunt eu id minim elit commodo elit nulla. Mollit adipisicing Lorem laboris excepteur laboris. Nostrud commodo excepteur nisi culpa quis ex est dolore deserunt. Nulla commodo cupidatat sit minim ex amet culpa culpa sunt eu. Adipisicing esse in culpa et proident ullamco. Nisi ad ipsum elit enim magna amet.",
-                style: TextStyle(fontSize: 17))
+            Text(dish.description != null ? dish.description! : "",
+                style: const TextStyle(fontSize: 17))
           ]),
         ),
       ),
     );
+  }
+
+  Widget verifyImage(Size size) {
+    Widget wig =
+        Image.asset("assets/default-image.png", height: size.height * 0.16);
+    if (dish.images!.isNotEmpty) {
+      wig = CarouselSlider(
+        options: CarouselOptions(
+            autoPlay: true,
+            viewportFraction: 0.8,
+            initialPage: 0,
+            enlargeCenterPage: true,
+            enlargeFactor: 1,
+            aspectRatio: 16 / 9,
+            height: 250),
+        items: dish.images!
+            .map((e) => Image.network("http://localhost:3000/${e.path}",
+                height: size.height * 0.16))
+            .toList(),
+      );
+    }
+    return wig;
   }
 }
