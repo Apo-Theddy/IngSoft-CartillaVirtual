@@ -53,7 +53,8 @@ export class Dish {
     @Column({
         name: "QuantityAvailable",
         type: "int",
-        nullable: true
+        nullable: true,
+        default: 0
     })
     QuantityAvailable?: number
 
