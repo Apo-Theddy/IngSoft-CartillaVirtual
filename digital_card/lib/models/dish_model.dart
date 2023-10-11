@@ -38,7 +38,7 @@ class Dish {
         double.parse("${json["UnitPrice"]}"),
         json["CreationDate"],
         json["IsActive"],
-        json["QuantityAvailabre"],
+        json["QuantityAvailable"],
         categories,
         images);
   }

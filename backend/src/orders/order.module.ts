@@ -7,10 +7,12 @@ import { OrderController } from "./controllers/order.controller";
 import { TableModule } from "src/tables/table.module";
 import { Dish } from "src/dishes/entities/dish.entity";
 import { DishModule } from "src/dishes/dish.module";
+import { EmployeesModule } from "src/employees/employees.module";
 
 @Module({
-    imports: [TypeOrmModule.forFeature([Order, Dish, Table, OrderItem]), DishModule, TableModule],
+    imports: [TypeOrmModule.forFeature([Order, Dish, Table, OrderItem]), DishModule, TableModule, EmployeesModule],
     providers: [OrderService],
-    controllers: [OrderController]
+    controllers: [OrderController],
+    exports: [OrderService]
 })
 export class OrderModule { }

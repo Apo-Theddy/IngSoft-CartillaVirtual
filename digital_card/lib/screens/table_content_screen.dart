@@ -1,7 +1,4 @@
-import 'package:digital_card/cards/dish_card.dart';
 import 'package:digital_card/cards/dish_order_card.dart';
-import 'package:digital_card/cards/order_card.dart';
-import 'package:digital_card/models/dish_model.dart';
 import 'package:digital_card/models/order_model.dart';
 import 'package:digital_card/services/order_service.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +12,7 @@ class TableContentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 245, 244, 244),
+      backgroundColor: const Color.fromARGB(255, 245, 244, 244),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -29,15 +26,18 @@ class TableContentScreen extends StatelessWidget {
             } else if (snap.hasError) {
               return const Center(
                   child: Text("Ocurrio un problema al obtener las ordenes"));
+            } else if (snap.data == null) {
+              return const Center(child: Text("Sin ordenes"));
             }
             final order = (snap.data as Order);
+
             final totalDishes = order.orderItems.length;
             return Container(
               padding: const EdgeInsets.all(10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Total platillos: ${totalDishes}",
+                  Text("Total platillos: $totalDishes",
                       style: const TextStyle(
                           fontSize: 30, fontFamily: "Harlowsi")),
                   const SizedBox(height: 15),

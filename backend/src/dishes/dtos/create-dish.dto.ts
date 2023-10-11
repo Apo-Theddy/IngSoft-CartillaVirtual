@@ -18,8 +18,6 @@ export class CreateDishDto {
     @IsOptional()
     QuantityAvailable?: number
 
-
-
     @IsArray()
     @IsPositive({ each: true })
     @IsNumber({}, { each: true })

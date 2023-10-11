@@ -1,23 +1,20 @@
-import 'package:digital_card/models/dish_model.dart';
-import 'package:digital_card/services/dish_service.dart';
-import 'package:digital_card/services/tables_service.dart';
+import 'package:digital_card/models/employee_model.dart';
+import 'package:digital_card/screens/chat_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:digital_card/screens/dishes_screen.dart';
 import 'package:digital_card/screens/tables_screen.dart';
 import "package:flutter_hooks/flutter_hooks.dart";
 import 'package:awesome_bottom_bar/widgets/inspired/inspired.dart';
 import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
-
-final screens = [const DishesScreen(), const TablesScreen()];
+import "package:get/get.dart";
+import "package:provider/provider.dart";
 
 class HomeScreen extends HookWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({super.key, required this.employee});
+  final Employee employee;
 
   @override
   Widget build(BuildContext context) {
-    final tableService = TablesService();
-    tableService.getTable(1).then((value) {});
-
     final currentIndex = useState<int>(0);
     final pageController = usePageController(initialPage: currentIndex.value);
 
@@ -26,7 +23,7 @@ class HomeScreen extends HookWidget {
       body: PageView(
         controller: pageController,
         onPageChanged: (index) => currentIndex.value = index,
-        children: screens,
+        children: [DishesScreen(employee: employee), const TablesScreen()],
       ),
       bottomNavigationBar: BottomBarInspiredOutside(
         items: const [
@@ -58,6 +55,14 @@ class HomeScreen extends HookWidget {
         chipStyle: const ChipStyle(
             background: Color(0xff183365),
             notchSmoothness: NotchSmoothness.defaultEdge),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Get.to(() => ChatScreen(employee: employee),
+              transition: Transition.cupertino);
+        },
+        backgroundColor: Colors.black,
+        child: const Icon(Icons.message),
       ),
     );
   }

@@ -1,4 +1,5 @@
 import { Dish } from "src/dishes/entities/dish.entity"
+import { Employees } from "src/employees/entities/employees.entity"
 import { Table } from "src/tables/entities/table.entity"
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany, JoinColumn } from "typeorm"
 
@@ -38,6 +39,10 @@ export class Order {
 
     @OneToMany(() => OrderItem, (orderItem) => orderItem.Order, { eager: true })
     OrderItems: OrderItem[];
+
+    @ManyToOne(() => Employees, { eager: true })
+    @JoinColumn({ name: "EmployeeID" })
+    Employee: Employees
 }
 
 @Entity({ name: "OrderItem" })

@@ -15,7 +15,7 @@ export class OrderController {
 
     @Get(":id")
     GetOrder(@Param("id", ParseIntPipe) id: number): Promise<Order> {
-        return this.orderService.GetOrder(id)
+        return this.orderService.GetOrder({ where: { OrderID: id, IsComplete: 0 } })
     }
 
     @Get("table/:id")

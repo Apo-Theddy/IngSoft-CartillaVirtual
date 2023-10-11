@@ -1,12 +1,25 @@
 import { WebSocketGateway, MessageBody, SubscribeMessage, WebSocketServer, OnGatewayInit } from '@nestjs/websockets';
 import { Server } from 'socket.io';
 import { CreateDishDto } from 'src/dishes/dtos/create-dish.dto';
+import { Dish } from 'src/dishes/entities/dish.entity';
 import { DishService } from 'src/dishes/services/dish.service';
+import { CreateOrderDto } from 'src/orders/dtos/create-order.dto';
+import { OrderService } from 'src/orders/services/order.service';
+import { CreateTableDto } from 'src/tables/dtos/create-table.dto';
+import { TableService } from 'src/tables/services/table.service';
 
-@WebSocketGateway()
+@WebSocketGateway({
+    cors: {
+        origin: "*"
+    }
+})
 export class EventsGateway implements OnGatewayInit {
 
-    constructor(private readonly dishService: DishService) { }
+    constructor(
+        private readonly dishService: DishService,
+        private readonly tableService: TableService,
+        private readonly orderService: OrderService
+    ) { }
 
     @WebSocketServer()
     server: Server
@@ -18,10 +31,31 @@ export class EventsGateway implements OnGatewayInit {
         })
     }
 
-    @SubscribeMessage("AddNewDish")
-    async AddNewDish(@MessageBody() body: CreateDishDto) {
-        let newDish = await this.dishService.AddDish(body)
-        this.server.emit("AddNewDish", newDish)
+    @SubscribeMessage("AddDish")
+    async AddDish(@MessageBody() body: CreateDishDto) {
+        const dish = await this.dishService.AddDish
+            (body);
+        this.server.emit("UpdateDish", dish);
+    }
+
+    @SubscribeMessage("AddTable")
+    async AddTable(@MessageBody() body: CreateTableDto) {
+        const table = await this.tableService.AddTable(body);
+        this.server.emit("AddTable", table);
+    }
+
+    @SubscribeMessage("AddOrder")
+    async AddOrder(@MessageBody() body: CreateOrderDto) {
+        let { OrderDishes } = body;
+        await this.orderService.AddOrder(body);
+        let dish = await this.dishService.GetDish(OrderDishes[0].DishID);
+        this.server.emit("UpdateDish", dish);
+    }
+
+    @SubscribeMessage("SetOrderComplete")
+    async SetOrderComplete(@MessageBody() body: any) {
+        await this.orderService.SetOrderComplete(body)
+        this.server.emit("UpdateListOrders")
     }
 }
 

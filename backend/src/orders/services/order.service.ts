@@ -1,20 +1,23 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
 import { Order, OrderItem } from "../entities/order.entity";
 import { InjectRepository } from "@nestjs/typeorm"
-import { Repository } from "typeorm"
+import { FindOneOptions, Repository } from "typeorm"
 import { CreateOrderDto } from "../dtos/create-order.dto";
 import { TableService } from "src/tables/services/table.service";
 import { UpdateOrderDto } from "../dtos/update-order.dto";
 import { DishService } from "src/dishes/services/dish.service";
 import { OrderDish } from "../interfaces/order.interface";
+import { EmployeeService } from "src/employees/service/employees.service";
 
 @Injectable()
 export class OrderService {
+
     constructor(
         @InjectRepository(Order) private orderRepository: Repository<Order>,
         @InjectRepository(OrderItem) private orderItemRepository: Repository<OrderItem>,
         private readonly tableService: TableService,
-        private readonly dishService: DishService
+        private readonly dishService: DishService,
+        private readonly employeeService: EmployeeService
     ) { }
 
 
@@ -23,10 +26,10 @@ export class OrderService {
         return orders
     }
 
-    async GetOrder(id: number): Promise<Order> {
-        let order = this.orderRepository.findOne({ where: { IsActive: 1 } })
+    async GetOrder(options: FindOneOptions<Order>): Promise<Order> {
+        let order: Order = await this.orderRepository.findOne(options);
         if (!order)
-            throw new NotFoundException(`No se encontro ninguna orden con el id: '${id}'`)
+            throw new NotFoundException(`No se encontro ninguna orden con el id: '${options.order.OrderID}'`)
         return order
     }
 
@@ -36,14 +39,20 @@ export class OrderService {
         return order;
     }
 
-    async VerifyOrder(tableID: number, orderDishes: OrderDish[]): Promise<Order> {
+    async VerifyOrder(tableID: number, orderDishes: OrderDish[], employeeID: number): Promise<Order> {
         let order = await this.orderRepository.findOne({ where: { Table: { TableID: tableID }, IsComplete: 0 } })
         if (!order) {
-            let table = await this.tableService.GetTable(tableID)
+            let [table, employee] = await Promise.all([
+                this.tableService.GetTable(tableID),
+                this.employeeService.GetEmployeeById(employeeID)
+            ]);
             let availableDishes = []
-            let newOrder = this.orderRepository.create({ Table: table })
+            let newOrder = this.orderRepository.create({ Table: table, Employee: employee })
             for (let orderDish of orderDishes) {
-                let orderItem = await this.validateOrderItem(orderDish.DishID, orderDish.Quantity)
+                let orderItem = await Promise.all([
+                    this.validateOrderItem(orderDish.DishID, orderDish.Quantity),
+                    this.employeeService.GetEmployeeById(employeeID)
+                ]);
                 availableDishes.push(orderItem)
                 newOrder.OrderItems = availableDishes
             }
@@ -71,13 +80,13 @@ export class OrderService {
     }
 
     async AddOrder(createOrderDto: CreateOrderDto): Promise<Order> {
-        let order = await this.VerifyOrder(createOrderDto.TableID, createOrderDto.OrderDishes);
+        let order = await this.VerifyOrder(createOrderDto.TableID, createOrderDto.OrderDishes, createOrderDto.EmployeeID);
         return await this.orderRepository.save(order)
     }
 
     async AddDishToOrder({ OrderID, DishID, Quantity }: UpdateOrderDto) {
         let [order, dish] = await Promise.all([
-            this.GetOrder(OrderID),
+            this.GetOrder({ where: { OrderID, IsComplete: 0 } }),
             this.dishService.ConsumeDishByQuantity(DishID, Quantity),
         ])
         if (dish !== null) {
@@ -93,9 +102,10 @@ export class OrderService {
         }
     }
 
-    async SetOrderComplete(id: number) {
-        let order = await this.GetOrder(id)
-        order.IsComplete = 1
+    async SetOrderComplete(OrderID: number) {
+        let order = await this.GetOrder({ where: { OrderID } })
+        if (order.IsComplete) order.IsComplete = 0;
+        else order.IsComplete = 1
         await this.orderRepository.save(order)
     }
 
@@ -111,8 +121,8 @@ export class OrderService {
         await this.orderItemRepository.delete(orderItem)
     }
 
-    async RemoveOrder(id: number) {
-        let order = await this.GetOrder(id)
+    async RemoveOrder(OrderID: number) {
+        let order = await this.GetOrder({ where: { OrderID, IsComplete: 0 } })
         order.IsActive = 0
         await this.orderRepository.save(order)
     }

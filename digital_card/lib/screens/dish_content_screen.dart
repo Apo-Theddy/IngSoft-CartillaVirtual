@@ -1,26 +1,32 @@
+import "dart:async";
+import "dart:convert";
+
 import 'package:digital_card/cards/table_dish_card.dart';
-import "package:digital_card/cards/table_card.dart";
 import "package:digital_card/models/dish_model.dart";
-import "package:digital_card/services/dish_service.dart";
+import "package:digital_card/models/order_dish_model.dart";
 import "package:digital_card/services/tables_service.dart";
 import 'package:flutter/material.dart';
-import "package:flutter_hooks/flutter_hooks.dart";
 import "package:intl/intl.dart";
 import "package:carousel_slider/carousel_slider.dart";
 
 final tablesService = TablesService();
 
-class DishContentScreen extends HookWidget {
-  const DishContentScreen({super.key, required this.dish});
-  final Dish dish;
+class DishContentScreen extends StatefulWidget {
+  DishContentScreen({super.key, required this.dish});
+  Dish dish;
+
+  @override
+  State<DishContentScreen> createState() => _DishContentScreenState();
+}
+
+class _DishContentScreenState extends State<DishContentScreen> {
+  int countDish = 1;
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-
-    final countDish = useState<int>(1);
     final totalPrice =
-        countDish.value * dish.unitPrice; // Calcula el precio sin formato
+        countDish * widget.dish.unitPrice; // Calcula el precio sin formato
     final formatPrice = NumberFormat("#,##0.00", 'es').format(totalPrice);
 
     return Scaffold(
@@ -40,7 +46,7 @@ class DishContentScreen extends HookWidget {
                 height: 300,
                 child: verifyImage(size)),
             // Dish information
-            Text(dish.dishName,
+            Text(widget.dish.dishName,
                 style: const TextStyle(
                     fontSize: 21,
                     fontWeight: FontWeight.bold,
@@ -51,63 +57,11 @@ class DishContentScreen extends HookWidget {
               children: [
                 // num dishes
                 Container(
-                  width: 150,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black45),
-                      borderRadius: BorderRadius.circular(100)),
-                  child: Row(children: [
-                    Expanded(
-                        child: ElevatedButton(
-                            style: const ButtonStyle(
-                                backgroundColor:
-                                    MaterialStatePropertyAll(Colors.black12),
-                                elevation: MaterialStatePropertyAll(0),
-                                shape: MaterialStatePropertyAll(
-                                  RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(25),
-                                        bottomLeft: Radius.circular(25)),
-                                  ),
-                                )),
-                            onPressed: () =>
-                                {if (countDish.value > 1) countDish.value--},
-                            child: SizedBox(
-                              height: 50,
-                              child:
-                                  Icon(Icons.remove, color: Color(0xff183365)),
-                            ))),
-                    Expanded(
-                        child: Text(
-                      "${countDish.value}",
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                          fontSize: 21,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xff183365)),
-                    )),
-                    Expanded(
-                        child: ElevatedButton(
-                            style: const ButtonStyle(
-                                backgroundColor:
-                                    MaterialStatePropertyAll(Colors.black12),
-                                elevation: MaterialStatePropertyAll(0),
-                                shape: MaterialStatePropertyAll(
-                                  RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.only(
-                                        topRight: Radius.circular(25),
-                                        bottomRight: Radius.circular(25)),
-                                  ),
-                                )),
-                            onPressed: () => countDish.value++,
-                            child: const SizedBox(
-                              height: 50,
-                              child: Icon(
-                                Icons.add,
-                                color: Color(0xff183365),
-                              ),
-                            ))),
-                  ]),
-                ),
+                    width: 150,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black45),
+                        borderRadius: BorderRadius.circular(100)),
+                    child: validateDishQuantity()),
                 Text(
                   "S/ $formatPrice",
                   style: const TextStyle(
@@ -120,6 +74,11 @@ class DishContentScreen extends HookWidget {
             const SizedBox(height: 20),
             InkWell(
               onTap: () {
+                if (widget.dish.quantityAvailable != null) {
+                  if (widget.dish.quantityAvailable == 0) {
+                    return;
+                  }
+                }
                 showModalBottomSheet(
                     backgroundColor: const Color(0XFFFFFEFE),
                     context: context,
@@ -150,7 +109,14 @@ class DishContentScreen extends HookWidget {
                                       itemCount: snap.data.length,
                                       itemBuilder: (_, i) {
                                         final table = snap.data[i];
-                                        return CardTableDish(table: table);
+                                        final orderDish = OrderDishModel(
+                                            widget.dish.dishName,
+                                            widget.dish.dishID,
+                                            countDish);
+                                        return CardTableDish(
+                                            table: table,
+                                            orderDish: orderDish,
+                                            updateCountDish: updateCountDish);
                                       },
                                     );
                                   }),
@@ -181,7 +147,8 @@ class DishContentScreen extends HookWidget {
                     fontSize: 19,
                     fontWeight: FontWeight.bold)),
             const SizedBox(height: 10),
-            Text(dish.description != null ? dish.description! : "",
+            Text(
+                widget.dish.description != null ? widget.dish.description! : "",
                 style: const TextStyle(fontSize: 17))
           ]),
         ),
@@ -192,7 +159,7 @@ class DishContentScreen extends HookWidget {
   Widget verifyImage(Size size) {
     Widget wig =
         Image.asset("assets/default-image.png", height: size.height * 0.16);
-    if (dish.images!.isNotEmpty) {
+    if (widget.dish.images!.isNotEmpty) {
       wig = CarouselSlider(
         options: CarouselOptions(
             autoPlay: true,
@@ -202,12 +169,87 @@ class DishContentScreen extends HookWidget {
             enlargeFactor: 1,
             aspectRatio: 16 / 9,
             height: 250),
-        items: dish.images!
-            .map((e) => Image.network("http://localhost:3000/${e.path}",
+        items: widget.dish.images!
+            .map((e) => Image.network("http://192.168.1.7:3000/${e.path}",
                 height: size.height * 0.16))
             .toList(),
       );
     }
     return wig;
+  }
+
+  Widget validateDishQuantity() {
+    if (widget.dish.quantityAvailable! <= 0) {
+      return const Text(
+        "Sin disponibilidad",
+        textAlign: TextAlign.center,
+      );
+    }
+    return Row(children: [
+      Expanded(
+          child: ElevatedButton(
+              style: const ButtonStyle(
+                  backgroundColor: MaterialStatePropertyAll(Colors.black12),
+                  elevation: MaterialStatePropertyAll(0),
+                  shape: MaterialStatePropertyAll(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(25),
+                          bottomLeft: Radius.circular(25)),
+                    ),
+                  )),
+              onPressed: () => {if (countDish > 1) setState(() => countDish--)},
+              child: const SizedBox(
+                height: 50,
+                child: Icon(Icons.remove, color: Color(0xff183365)),
+              ))),
+      Expanded(
+          child: Text(
+        "${countDish}",
+        textAlign: TextAlign.center,
+        style: const TextStyle(
+            fontSize: 21,
+            fontWeight: FontWeight.bold,
+            color: Color(0xff183365)),
+      )),
+      Expanded(
+          child: ElevatedButton(
+              style: const ButtonStyle(
+                  backgroundColor: MaterialStatePropertyAll(Colors.black12),
+                  elevation: MaterialStatePropertyAll(0),
+                  shape: MaterialStatePropertyAll(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(25),
+                          bottomRight: Radius.circular(25)),
+                    ),
+                  )),
+              onPressed: () {
+                if (countDish < widget.dish.quantityAvailable!) {
+                  setState(() {
+                    countDish++;
+                  });
+                }
+              },
+              child: const SizedBox(
+                height: 50,
+                child: Icon(
+                  Icons.add,
+                  color: Color(0xff183365),
+                ),
+              ))),
+    ]);
+  }
+
+  updateCountDish() {
+    setState(() {
+      if (countDish > widget.dish.quantityAvailable!) {
+        countDish = countDish - widget.dish.quantityAvailable!;
+      } else {
+        countDish = widget.dish.quantityAvailable! - countDish;
+      }
+      widget.dish.quantityAvailable = countDish;
+      countDish = 1;
+    });
   }
 }

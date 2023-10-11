@@ -9,6 +9,11 @@ export class CreateOrderDto {
     @IsPositive()
     TableID: number
 
+    @IsNotEmpty()
+    @IsNumber()
+    @IsPositive()
+    EmployeeID: number
+
     @IsArray()
     @ArrayMinSize(1)
     @ValidateNested()

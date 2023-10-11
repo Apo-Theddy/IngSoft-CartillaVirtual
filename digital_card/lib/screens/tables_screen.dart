@@ -1,14 +1,30 @@
+import 'dart:convert';
+
 import 'package:digital_card/cards/table_card.dart';
+import 'package:digital_card/main.dart';
+import 'package:digital_card/models/table_model.dart';
 import 'package:digital_card/screens/table_content_screen.dart';
 import 'package:digital_card/services/tables_service.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import "package:digital_card/cards/order_card.dart";
 
 final tableService = TablesService();
 
-class TablesScreen extends StatelessWidget {
+class TablesScreen extends StatefulWidget {
   const TablesScreen({super.key});
+
+  @override
+  State<TablesScreen> createState() => _TablesScreenState();
+}
+
+class _TablesScreenState extends State<TablesScreen> {
+  List<TableModel> tables = [];
+
+  @override
+  void initState() {
+    super.initState();
+    updateListOrders();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -106,5 +122,19 @@ class TablesScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  getTables() {
+    setState(() {
+      tableService.getTables().then((tables) {
+        this.tables = tables;
+      });
+    });
+  }
+
+  updateListOrders() {
+    socketService.socket.on("UpdateListOrders", (data) {
+      if (mounted) setState(() {});
+    });
   }
 }
