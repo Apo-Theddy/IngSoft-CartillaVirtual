@@ -1,4 +1,5 @@
 import 'package:digital_card/models/dish_model.dart';
+import 'package:digital_card/screens/dish_conent_screenv2.dart';
 import 'package:digital_card/screens/dish_content_screen.dart';
 import 'package:digital_card/utils/util_widget.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ class DishCard extends StatelessWidget {
 
     return InkWell(
       onTap: () {
-        Get.to(() => DishContentScreen(dish: dish),
+        Get.to(() => DishContentScreenV2(dish: dish),
             transition: Transition.cupertino);
       },
       child: Stack(

@@ -8,6 +8,7 @@ import "package:digital_card/services/tables_service.dart";
 import 'package:flutter/material.dart';
 import "package:intl/intl.dart";
 import "package:carousel_slider/carousel_slider.dart";
+import "package:digital_card/constants/contants_vars.dart";
 
 final tablesService = TablesService();
 
@@ -170,8 +171,8 @@ class _DishContentScreenState extends State<DishContentScreen> {
             aspectRatio: 16 / 9,
             height: 250),
         items: widget.dish.images!
-            .map((e) => Image.network("http://192.168.1.7:3000/${e.path}",
-                height: size.height * 0.16))
+            .map((e) =>
+                Image.network("$url/${e.path}", height: size.height * 0.16))
             .toList(),
       );
     }
@@ -205,7 +206,7 @@ class _DishContentScreenState extends State<DishContentScreen> {
               ))),
       Expanded(
           child: Text(
-        "${countDish}",
+        "$countDish",
         textAlign: TextAlign.center,
         style: const TextStyle(
             fontSize: 21,

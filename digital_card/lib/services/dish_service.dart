@@ -21,6 +21,37 @@ class DishService extends UtilModel {
     }
   }
 
+  Future<List<Dish>> getDishsByCategory(String category) async {
+    try {
+      http.Response response =
+          await http.get(uri("dishs/search/category/$category"));
+      if (response.statusCode == 200) {
+        List<dynamic> jsonData = json.decode(response.body);
+        return jsonData.map((dish) => Dish.fromJson(dish)).toList();
+      } else {
+        return [];
+      }
+    } catch (err) {
+      handleError("Error al obtener los platillos: ", err);
+      return [];
+    }
+  }
+
+  Future<List<Dish>> getDishesByName(String name) async {
+    try {
+      http.Response response = await http.get(uri("dishs/search/name/$name"));
+      if (response.statusCode == 200) {
+        List<dynamic> jsonData = json.decode(response.body);
+        return jsonData.map((dish) => Dish.fromJson(dish)).toList();
+      } else {
+        return [];
+      }
+    } catch (err) {
+      handleError("Error al obtener los platillos: ", err);
+      return [];
+    }
+  }
+
   Future<Dish?> getDish(int id) async {
     try {
       http.Response response = await http.get(uri("dishs/$id"));

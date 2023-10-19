@@ -18,6 +18,16 @@ export class DishController {
         return this.dishService.GetDish(id)
     }
 
+    @Get("search/category/:category")
+    GetDishesByCategory(@Param("category") category: string): Promise<Dish[]> {
+        return this.dishService.GetDishesByCategory(category);
+    }
+
+    @Get("search/name/:name")
+    GetDishesByName(@Param("name") name: string): Promise<Dish[]> {
+        return this.dishService.GetDishesByName(name);
+    }
+
     @Post()
     AddDish(@Body() createDishDto: CreateDishDto): Promise<Dish> {
         return this.dishService.AddDish(createDishDto)

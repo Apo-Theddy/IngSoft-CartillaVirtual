@@ -288,6 +288,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.4.1"
+  salomon_bottom_bar:
+    dependency: "direct dev"
+    description:
+      name: salomon_bottom_bar
+      sha256: e20abf2e449749432223a8b4e6647c212eef6c2b638e0ed8cc92eff9529c2b48
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.3.2"
   shared_preferences:
     dependency: "direct dev"
     description:
@@ -349,6 +357,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
+  slidable_button:
+    dependency: "direct dev"
+    description:
+      name: slidable_button
+      sha256: "8a20672f226898ff5ddaca38ebe87069020dc8d1b2512857b5ed335af0d7c893"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.0+1"
   socket_io_client:
     dependency: "direct dev"
     description:

@@ -15,23 +15,23 @@ export class ImageServices {
         private readonly dishService: DishService
     ) { }
 
-    async getImages(): Promise<Image[]> {
+    async GetImages(): Promise<Image[]> {
         let images = await this.imageRepository.find({ where: { IsActive: 1 } })
         return images
     }
 
-    async getImagesByDish(dishID: number): Promise<Image[]> {
+    async GetImagesByDish(dishID: number): Promise<Image[]> {
         let images = await this.imageRepository.find({ where: { IsActive: 1, Dish: { DishID: dishID } } })
         return images
     }
 
-    async getImage(id: number): Promise<Image> {
+    async GetImage(id: number): Promise<Image> {
         let image = await this.imageRepository.findOne({ where: { IsActive: 1, ImageID: id } })
         if (!image) throw new NotFoundException("No se encontro la imagen buscada")
         return image
     }
 
-    async saveImage(dishID: number, originalname: string, filename: string, path: string): Promise<Image> {
+    async SaveImage(dishID: number, originalname: string, filename: string, path: string): Promise<Image> {
         let newImage = this.imageRepository.create({
             OriginalName: originalname,
             UniqueName: filename,
@@ -47,8 +47,8 @@ export class ImageServices {
         return image;
     }
 
-    async removeImage(id: number) {
-        let image = await this.getImage(id);
+    async RemoveImage(id: number) {
+        let image = await this.GetImage(id);
         image.IsActive = 0;
         await this.imageRepository.save(image);
     }

@@ -1,7 +1,7 @@
 import { Image } from "src/images/entities/image.entity";
 import { Category } from "src/categories/entities/category.entity";
 
-import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, ManyToOne, JoinTable, ManyToMany, OneToMany } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, ManyToOne, JoinTable, ManyToMany, OneToMany, Index } from "typeorm";
 
 @Entity({ name: "Dishs" })
 export class Dish {
@@ -14,6 +14,7 @@ export class Dish {
         length: 150,
         nullable: false
     })
+    @Index({ unique: false })
     DishName: string
 
     @Column({

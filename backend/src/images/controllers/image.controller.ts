@@ -10,18 +10,18 @@ export class ImageController {
     constructor(private readonly imageService: ImageServices) { }
 
     @Get()
-    getImages(): Promise<Image[]> {
-        return this.imageService.getImages();
+    GetImages(): Promise<Image[]> {
+        return this.imageService.GetImages();
     }
 
     @Get(":id")
-    getImage(@Param("id", ParseIntPipe) id: number): Promise<Image> {
-        return this.imageService.getImage(id)
+    GetImage(@Param("id", ParseIntPipe) id: number): Promise<Image> {
+        return this.imageService.GetImage(id)
     }
 
     @Get("dish/:id")
-    getImageByDish(@Param("id", ParseIntPipe) id: number): Promise<Image[]> {
-        return this.imageService.getImagesByDish(id);
+    GetImageByDish(@Param("id", ParseIntPipe) id: number): Promise<Image[]> {
+        return this.imageService.GetImagesByDish(id);
     }
 
     @Post("upload")
@@ -32,13 +32,13 @@ export class ImageController {
         }),
         fileFilter: fileFilter
     }))
-    uploadImage(@UploadedFile() file: Express.Multer.File, @Body() body: any): Promise<Image> {
-        return this.imageService.saveImage(body.DishID, file.originalname, file.filename, file.path)
+    UploadImage(@UploadedFile() file: Express.Multer.File, @Body() body: any): Promise<Image> {
+        return this.imageService.SaveImage(body.DishID, file.originalname, file.filename, file.path)
     }
 
 
     @Delete(":id")
-    removeImage(@Param("id", ParseIntPipe) id: number) {
-        this.imageService.removeImage(id)
+    RemoveImage(@Param("id", ParseIntPipe) id: number) {
+        this.imageService.RemoveImage(id)
     }
 }
