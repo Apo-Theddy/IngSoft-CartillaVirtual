@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"><!--cnd icono-->
+    <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid&family=Poppins:wght@500&display=swap"
+        rel="stylesheet">
+    <title>J3nn1</title>
+    <link rel="shortcut icon" href="../../imgs/Icono Jennifer.jpeg" type="image/x-icon">
+    <link rel="stylesheet" href="../../css/index-style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../../css/platillos-style.css">
+</head>
+
+<body>
+    <div class="slider-barra"><!--todo lo que contiene la barra lateral-->
+        <div class="contenido_logo"><!--Logo-->
+            <div class="logo">
+                <i class="fa-solid fa-utensils"></i>
+                <div class="nombre-logo">Bienvenido </div>
+            </div>
+            <i class='bx bx-menu' id="btn" style="color: #ff9f0d"></i>
+        </div>
+        <ul class="nav_lista"><!--Todo lo que contiene la lista-->
+            <li>
+                <i class='bx bx-search-alt-2' style="color: #ff9f0d"></i>
+                <input type="text" placeholder="Buscar...">
+                <span class="tooltip">Buscar</span>
+            </li>
+            <li>
+                <a href="../index/index.html">
+                    <i class="fa-solid fa-house"></i>
+                    <span class="links-name">Inicio</span><!--Nombre-->
+                </a>
+                <span class="tooltip">Inicio</a></span><!--Nombre saliente-->
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-chair'></i>
+                    <span class="links-name">Mesas</span>
+                </a>
+                <span class="tooltip">Mesas</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-dna"></i>
+                    <span class="links-name">Ordenes</span>
+                </a>
+                <span class="tooltip">Ordenes</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bxs-book'></i>
+                    <span class="links-name">Platillo</span>
+                </a>
+                <span class="tooltip">Platillo</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bxs-trophy'></i>
+                    <span class="links-name">Chat</span>
+                </a>
+                <span class="tooltip">Chat</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-money-withdraw'></i>
+                    <span class="links-name">Empledos</span>
+                </a>
+                <span class="tooltip">Empleados</span>
+            </li>
+
+        </ul>
+    </div>
+    <div class="overlay"></div>
+    <!---->
+    <!--Contenido del menú -->
+    <header class="header">
+        <div class="header-content container">
+            <div class="header-txt">
+                <h1>Modificar <br> <span>platillos y bebidas </span></h1>
+                <p>
+                    En un mundo donde los sueos se entrelazan con la realidad, emprendí un viaje que desafió los
+                    límites de lo conocido. Atravesé valles de ensueño, donde las flores danzaban al compás del viento y
+                    los árboles murmuraban secretos ancestrales. Las montañas, majestuosas guardianas de la tierra, se
+                    alzaban imponentes en el horizonte, invitándome a ascender hacia lo desconocido. Siguiendo el rastro
+                    de estrellas fugaces, llegué a un lago de aguas cristalinas que reflejaba la luz de la luna como un
+                    manto plateado. En este viaje, descubrí que la verdadera magia reside en la capacidad de creer en lo
+                    imposible y encontrar belleza en cada rincón del universo.
+                </p>
+            </div>
+        </div>
+
+    </header>
+
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <p>Contenido del popup aquí.</p>
+        </div>
+    </div>
+
+    <section class="menu-pl container">
+
+        <h2>Modificar platos entrantes</h2>
+
+        <div class="general-content" id="dishes_content">
+
+        </div>
+    </section>
+    <!-- Esto ni idea de que es XD -->
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+        integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../../entities/dish.entity.js"></script>
+    <script src="../../services/dishes.service.js"></script>
+    <script src="../../services/index.js"></script>
+
+</body>
+
+</html>
