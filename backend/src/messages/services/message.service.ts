@@ -42,13 +42,3 @@ export class MessageService {
         return null
     }
 }
-
-class DishService {
-    url = " https://ccaf-190-236-35-54.ngrok-free.app/api/dishs"
-    constructor() { }
-
-    async getDishs() {
-        let dishes = await fetch(this.url);
-        console.log()
-    }
-}

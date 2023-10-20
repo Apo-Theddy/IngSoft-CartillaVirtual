@@ -13,6 +13,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { EmployeesModule } from './employees/employees.module';
 import { getTypeOrmConfig } from './configs/type-orm.config';
 import { MessagesModule } from './messages/messages.module';
+import { SshModule } from './sshs/ssh.module';
 
 @Module({
   imports: [
@@ -32,7 +33,8 @@ import { MessagesModule } from './messages/messages.module';
       serveRoot: "/api/uploads"
     }),
     DishModule, CategoryModule, TableModule, OrderModule,
-    EventsModule, ImageModule, EmployeesModule, MessagesModule
+    EventsModule, ImageModule, EmployeesModule, MessagesModule,
+    SshModule
   ],
 })
 export class AppModule { }
