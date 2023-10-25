@@ -1,0 +1,121 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header {
+    background-image: url(../imgs/bg.svg);
+    background-position: center bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    min-height: 70vh;
+    padding: 80px 0 0 0;
+}
+
+.header-content {
+    display: flex;
+}
+
+.header-txt {
+    width: 50%;
+}
+
+.header-txt h1 {
+    font-size: 70px;
+    line-height: 85px;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.menu-pl h2 {
+    font-size: 30px;
+    line-height: 45px;
+    color: #ffb40b;
+    margin-bottom: 20px;
+}
+
+
+.header-txt span {
+    font-size: 80px;
+    color: #ffb40b;
+}
+
+.header-txt p {
+    font-size: 16px;
+    color: #ffffff;
+    margin-bottom: 30px;
+}
+
+.Pruebaaaaaaaaaaa {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 80px;
+    margin-left: 200px;
+}
+
+
+.Marco{
+    display: flex;
+    align-items: center;
+    width: 75vw;
+    max-width: 500px;
+    padding: 50px 30px 50px 20px;
+    background: #ffffff;
+    border-radius: 25px;
+    box-shadow: 1px 1px 15px 1px #0b023b;
+}
+
+.Marco img{
+    max-width: 270px;
+    width: 30vw;
+    height: 350px;
+    object-fit: cover;
+    margin-left: -60px;
+    margin-right: 30px;
+    border-radius: 25px;
+}
+
+.Marco .titulo{
+    font-size: 22px;
+    margin-right: 30px;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.Marco .listaO{
+    font-size: 16px;
+    font-weight: 900;
+    color: #0b023b;
+}
+
+.Marco .OrdenesCL {
+    font-size: 14px;
+    line-height: 1.6; 
+    color: #333; 
+    margin-top: 10px;
+}
+
+.Marco .OrdenesCL span {
+    font-weight: bold;
+    color: #ff6600;
+}
+
+.Marco .botn1{
+    margin-top: 1px;
+    border: 0;
+    background: #160458;
+    color: #ffffff;
+    font-weight: 900;
+    padding: 15px 20px;
+    font-size: 13px;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: .5s, color .10s;
+}
+
+.Marco .botn1:hover{
+    background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+    transform: scale(1.1,1.1, .3);
+}
