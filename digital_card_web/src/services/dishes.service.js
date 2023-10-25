@@ -1,6 +1,6 @@
 class DishesService {
     constructor() {
-        this.url = "http://localhost:3000/api/dishs";
+        this.url = "http://13.58.243.181/api/dishs";
     }
 
     async getDishes() {
