@@ -7,7 +7,7 @@ import { SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  const sshService: SshService = new SshService();
+  //const sshService: SshService = new SshService();
   const port = process.env.PORT || 3000;
 
   const document = SwaggerModule.createDocument(app, swaggerConfig);
@@ -20,6 +20,6 @@ async function bootstrap() {
     whitelist: false
   }))
   await app.listen(port);
-  await sshService.CreateTunnesSsh()
+  //await sshService.CreateTunnesSsh()
 }
 bootstrap();
