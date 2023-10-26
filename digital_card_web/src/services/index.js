@@ -2,6 +2,7 @@ let btn = document.querySelector("#btn");
 let slidebar = document.querySelector(".slider-barra");
 let overlay = document.querySelector(".overlay");
 let dishContent = document.getElementById("dishes_content");
+let tableContent = document.getElementById("tables_content");
 let isMenuActive = false;
 
 btn.onclick = function () {
@@ -11,7 +12,7 @@ btn.onclick = function () {
 }
 
 overlay.onclick = function () {
-    if (isMenuActive) {
+    if (isMenuActive) { 
         slidebar.classList.remove("active");
         overlay.classList.remove("active");
         isMenuActive = false;
@@ -29,19 +30,29 @@ function showPopup() {
     popup.style.display = 'block';
 }
 
+
 function closePopup() {
     const popup = document.getElementById('popup');
     popup.style.display = 'none';
 }
-let dishService = new DishesService();
 
-const getDishs = async () => {
-    const dishes = await dishService.getDishes();
-    for (let dish of dishes) {
-        let dishComponent = createDishComponent(dish)
-        dishContent.innerHTML += dishComponent;
+let dishService = new DishesService();
+    const getDishs = async () => {
+        const dishes = await dishService.getDishes();
+        for (let dish of dishes) {
+            let dishComponent = createDishComponent(dish)
+            dishContent.innerHTML += dishComponent;
+        }
     }
-}
+
+let tableService = new TableService();
+    const getTables = async () => {
+        const tables = await tableService.getTables();
+        for (let table of tables) {
+            let tableComponent = createTableComponent(table)
+            tableContent.innerHTML += tableComponent;
+        }
+    }
 
 function createDishComponent({ dishName, description, unitPrice, images }) {
     let verifyImage = images.length > 0 ? `http://13.58.243.181/${images[0].Path}` : "https://img.freepik.com/vector-premium/image-icon-vector-illustration-photo-on-isolated-background-gallery-sign-concept_993513-11.jpg";
@@ -57,6 +68,26 @@ function createDishComponent({ dishName, description, unitPrice, images }) {
             </div>`;
 }
 
-getDishs()
+
+function createTableComponent({ TableName, images }) {
+    //let verifyImage = images.length > 0 ? `http://localhost:3000/${images[0].Path}` : "https://img.freepik.com/vector-premium/image-icon-vector-illustration-photo-on-isolated-background-gallery-sign-concept_993513-11.jpg";
+    let verifyImage = "../../imgs/Mesa.jpeg";
+
+    return `<div class="general-txt">
+                <img src=${verifyImage} " alt="">
+                <div class="table-content">
+                    <h3>${TableName}</h3>
+                    <div class="buttons">
+                        <a href="#" class="btn-2" onclick="showPopup()">Editar</a>
+                        <a href="#" class="btn-3" onclick="showPopupDelete()">Eliminar</a>
+                    </div>
+                </div>
+            </div>`;
+}
+//getDishs()
+
+//getTables()
+
+
 
 
