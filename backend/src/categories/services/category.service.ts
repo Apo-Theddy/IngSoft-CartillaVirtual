@@ -28,7 +28,6 @@ export class CategoryService {
         return await this.categoryRepository.save(newCategory)
     }
 
-
     /* 
         Modifies the value of 'is active' from 1 to 0,
         indicating that the category is not available

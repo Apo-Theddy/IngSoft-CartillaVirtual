@@ -45,7 +45,6 @@ export class DishService {
         let categories = []
         if (createDishDto.CategoriesID) {
             categories = createDishDto.CategoriesID.map((categoryID) => this.categoryService.GetCategory(categoryID));
-            console.log(categories);
         }
         let newDish = this.dishRepository.create(createDishDto)
         newDish.Categories = await Promise.all(categories)
@@ -71,15 +70,6 @@ export class DishService {
         return await this.dishRepository.save(dish)
     }
 
-    async ConsumeDish(id: number): Promise<Dish> {
-        let dish = await this.GetDish(id)
-        if (dish.QuantityAvailable != null && dish.QuantityAvailable > 0) {
-            --dish.QuantityAvailable
-            return await this.dishRepository.save(dish)
-        }
-        return null
-    }
-
     async ConsumeDishByQuantity(id: number, quantity: number): Promise<Dish> {
         let dish = await this.GetDish(id)
         if (dish.QuantityAvailable != null && dish.QuantityAvailable > 0 && quantity <= dish.QuantityAvailable) {
@@ -87,5 +77,12 @@ export class DishService {
             return await this.dishRepository.save(dish)
         }
         return null
+    }
+
+    async RemoveCategoryDish(dishID: number, categoryID: number) {
+        let dish = await this.GetDish(dishID);
+        let indexCategory = dish.Categories.findIndex((category) => category.CategoryID == categoryID);
+        dish.Categories.splice(indexCategory, 1);
+        await this.dishRepository.save(dish);
     }
 }

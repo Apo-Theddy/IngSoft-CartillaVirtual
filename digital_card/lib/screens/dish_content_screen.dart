@@ -3,6 +3,7 @@ import "dart:convert";
 
 import 'package:digital_card/cards/table_dish_card.dart';
 import "package:digital_card/models/dish_model.dart";
+import "package:digital_card/models/employee_model.dart";
 import "package:digital_card/models/order_dish_model.dart";
 import "package:digital_card/services/tables_service.dart";
 import 'package:flutter/material.dart';
@@ -13,8 +14,9 @@ import "package:digital_card/constants/contants_vars.dart";
 final tablesService = TablesService();
 
 class DishContentScreen extends StatefulWidget {
-  DishContentScreen({super.key, required this.dish});
+  DishContentScreen({super.key, required this.dish, required this.employee});
   Dish dish;
+  Employee employee;
 
   @override
   State<DishContentScreen> createState() => _DishContentScreenState();

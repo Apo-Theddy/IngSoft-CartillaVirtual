@@ -18,15 +18,16 @@
          crossorigin="anonymous">
     <!--Bootstrap icons-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">    
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Empleados</title>
     <link rel="shortcut icon" href="../../imgs/Icono Jennifer.jpeg" type="image/x-icon">
-    <link rel="stylesheet" href="../../css/index-style.css">
+    <link rel="stylesheet" href="../../css/empleados_barra.css">
     <link rel="stylesheet" href="../../css/empleado.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
     
 </head>
 <body>
-    <div class="slider-barra">
+    <!-- <div class="slider-barra">
         <div class="contenido_logo">
             <div class="logo">
                 <i class="fa-solid fa-utensils"></i>
@@ -85,9 +86,9 @@
 
         </ul>
     </div>
-    <div class="overlay"></div>
+    <div class="overlay"></div> -->
 
-    <section class="User">
+    <section class="p-3">
         <div class="row">
             <div class="col-12">
                 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#userForm"> Nuevo empleado <i class="bi bi-people"></i></button>
@@ -120,7 +121,8 @@
                             <td>1</td>
                             <td>24/10/2023</td>
                             <td>
-                                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#readData"><i class="bi bi-eye"></i></button>
+                                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#readData">
+                                    <i class="bi bi-eye"></i></button>
                                 <button class="btn btn-primary"><i class="bi bi-pencil"></i></button>
                                 <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
                             </td>
@@ -135,7 +137,8 @@
                             <td>1</td>
                             <td>24/10/2023</td>
                             <td>
-                                <button class="btn btn-success"><i class="bi bi-eye"></i></button>
+                                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#readData">
+                                    <i class="bi bi-eye"></i></button>
                                 <button class="btn btn-primary"><i class="bi bi-pencil"></i></button>
                                 <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
                             </td>
@@ -150,7 +153,8 @@
                             <td>1</td>
                             <td>24/10/2023</td>
                             <td>
-                                <button class="btn btn-success"><i class="bi bi-eye"></i></button>
+                               <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#readData">
+                                    <i class="bi bi-eye"></i></button>
                                 <button class="btn btn-primary"><i class="bi bi-pencil"></i></button>
                                 <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
                             </td>
@@ -161,7 +165,7 @@
         </div>
     </section>
 
-    
+    <!--Model Form-->
     <div class="modal fade" id="userForm">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
@@ -223,29 +227,25 @@
                     <form action="#" id="myForm">
 
                         <div class="card imgholder">
-                            <label for="imgInput" class="upload">
-                                <input type="file" name="" id="imgInput">
-                                <i class="bi bi-plus-circle"></i>
-                            </label>
-                            <img src="../../imgs/Perfil.jpeg" alt="" width="200" height="200">
+                            <img src="../../imgs/Perfil.jpeg" alt="" width="200" height="200" class="showImg">
                         </div>
 
                         <div class="inputField">
                             <div>
                                 <label for="name">Nombre: </label>
-                                <input type="text" name="" id="name" disabled>
+                                <input type="text" name="" id="showName" disabled>
                             </div>
                             <div>
                                 <label for="dni">Dni: </label>
-                                <input type="text" name="" id="dni" disabled>
+                                <input type="text" name="" id="showDni" disabled>
                             </div>
                             <div>
                                 <label for="tipo">Documento: </label>
-                                <input type="text" name="" id="tipo" disabled>
+                                <input type="text" name="" id="ShowTipo" disabled>
                             </div>
                             <div>
                                 <label for="sDate">Fecha: </label>
-                                <input type="date" name="" id="sDate" disabled>
+                                <input type="date" name="" id="showsDate" disabled>
                             </div>
                         </div>
                     </form>
