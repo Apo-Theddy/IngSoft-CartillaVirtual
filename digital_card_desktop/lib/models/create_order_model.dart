@@ -1,5 +1,4 @@
-import 'package:digital_card/main.dart';
-import 'package:digital_card/models/order_dish_model.dart';
+import 'package:digital_card_desktop/models/order_dish_model.dart';
 
 class CreateOrderModel {
   int tableID;
@@ -14,7 +13,6 @@ class CreateOrderModel {
   Map<String, dynamic> toJson() {
     return {
       "TableID": tableID,
-      "EmployeeID": employeeID,
       "OrderDishes": orderDishes.map((orderDish) => orderDish.toJson()).toList()
     };
   }

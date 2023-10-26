@@ -1,6 +1,7 @@
 import 'package:digital_card/cards/table_dish_card.dart';
 import 'package:digital_card/constants/contants_vars.dart';
 import 'package:digital_card/models/dish_model.dart';
+import 'package:digital_card/models/employee_model.dart';
 import 'package:digital_card/models/order_dish_model.dart';
 import 'package:digital_card/screens/dish_content_screen.dart';
 import "package:flutter/gestures.dart";
@@ -86,7 +87,8 @@ class _DishContentScreenV2State extends State<DishContentScreenV2> {
                       const SizedBox(height: 30),
                       Container(
                         padding: const EdgeInsets.all(10),
-                        height: widget.dish.description != null
+                        height: (widget.dish.description != null &&
+                                widget.dish.description!.trim().length > 2)
                             ? size.height * 0.17
                             : null,
                         decoration: const BoxDecoration(

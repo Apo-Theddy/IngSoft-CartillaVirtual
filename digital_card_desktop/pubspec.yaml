@@ -15,6 +15,15 @@ dependencies:
   cupertino_icons: ^1.0.2
   get: ^4.6.6
   collapsible_sidebar: ^2.0.6
+  flutter_hooks: ^0.20.3
+  http: ^1.1.0
+  google_fonts: ^6.1.0
+  flutter_icons_plus: ^1.0.3
+  eva_icons_flutter: ^3.1.0
+  flutter_form_builder: ^9.1.1
+  socket_io_client: ^2.0.3+1
+  pretty_animated_buttons: ^0.0.1
+  carousel_slider: ^4.2.1
 
 dev_dependencies:
   flutter_test:

@@ -30,16 +30,7 @@ class SocketService {
       dishes.value.add(Dish.fromJson(jsonData));
       dishes.notifyListeners();
     });
-    // Se suscribe al evento 'UpdateDish' y actualiza el valor de dishes
-    _socket.on('UpdateDish', (data) {
-      getDishes();
-    });
   }
-  Future<void> getDishes() async {
-    dishes.value = await dishService.getDishs();
-    dishes.notifyListeners();
-  }
-
   IO.Socket get socket => _socket;
 
   void close() {
