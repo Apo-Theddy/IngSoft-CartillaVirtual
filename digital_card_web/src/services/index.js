@@ -55,7 +55,7 @@ let tableService = new TableService();
     }
 
 function createDishComponent({ dishName, description, unitPrice, images }) {
-    let verifyImage = images.length > 0 ? `http://localhost:3000/${images[0].Path}` : "https://img.freepik.com/vector-premium/image-icon-vector-illustration-photo-on-isolated-background-gallery-sign-concept_993513-11.jpg";
+    let verifyImage = images.length > 0 ? `http://13.58.243.181/${images[0].Path}` : "https://img.freepik.com/vector-premium/image-icon-vector-illustration-photo-on-isolated-background-gallery-sign-concept_993513-11.jpg";
 
     return `<div class="general-txt">
                 <img src=${verifyImage} " alt="">
