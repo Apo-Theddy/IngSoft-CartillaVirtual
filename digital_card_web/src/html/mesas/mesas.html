@@ -12,11 +12,11 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"><!--cnd icono-->
     <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid&family=Poppins:wght@500&display=swap"
         rel="stylesheet">
-    <title>J3nn1</title>
+    <title>Mesas</title>
     <link rel="shortcut icon" href="../../imgs/Icono Jennifer.jpeg" type="image/x-icon">
     <link rel="stylesheet" href="../../css/index-style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="../../css/style3.css">
+    <link rel="stylesheet" href="../../css/mesas-style.css">
 </head>
 
 <body>
@@ -24,11 +24,10 @@
         <div class="contenido_logo"><!--Logo-->
             <div class="logo">
                 <i class="fa-solid fa-utensils"></i>
-                <div class="nombre-logo"> Bienvenido </div>
+                <div class="nombre-logo">Bienvenido </div>
             </div>
             <i class='bx bx-menu' id="btn" style="color: #ff9f0d"></i>
         </div>
-
         <ul class="nav_lista"><!--Todo lo que contiene la lista-->
             <li>
                 <i class='bx bx-search-alt-2' style="color: #ff9f0d"></i>
@@ -36,7 +35,7 @@
                 <span class="tooltip">Buscar</span>
             </li>
             <li>
-                <a href="./index.html">
+                <a href="../index/index.html">
                     <i class="fa-solid fa-house"></i>
                     <span class="links-name">Inicio</span><!--Nombre-->
                 </a>
@@ -50,14 +49,14 @@
                 <span class="tooltip">Mesas</span>
             </li>
             <li>
-                <a href="../../html/Ordenes/Ordenes.html">
+                <a href="#">
                     <i class="fa-solid fa-dna"></i>
                     <span class="links-name">Ordenes</span>
                 </a>
                 <span class="tooltip">Ordenes</span>
             </li>
             <li>
-                <a href="../../html/platillos/platillo.html">
+                <a href="#">
                     <i class='bx bxs-book'></i>
                     <span class="links-name">Platillo</span>
                 </a>
@@ -71,7 +70,7 @@
                 <span class="tooltip">Chat</span>
             </li>
             <li>
-                <a href="../../html/Empleado/empleado.html">
+                <a href="#">
                     <i class='bx bx-money-withdraw'></i>
                     <span class="links-name">Empledos</span>
                 </a>
@@ -81,18 +80,50 @@
         </ul>
     </div>
     <div class="overlay"></div>
-
-    <div class="login-card-container">
-        <div class="login-card">
-            <div class="login-card-logo">
-                <img src="../../imgs/Perfil.jpeg" alt="logo">
-            </div>
-            <div class="login-card-header">
-                <h1>Bienvenido</h1>
+    <!---->
+    <!--Contenido del menú -->
+    <header class="header">
+        <div class="header-content container">
+            <div class="header-txt">
+                <h1>Modificar <br> <span> mesas </span></h1>
+                <p>
+                    En un universoooo donde los sueos se entrelazan con la realidad, emprendí un viaje que desafió los
+                    límites de lo conocido. Atravesé valles de ensueño, donde las flores danzaban al compás del viento y
+                    los árboles murmuraban secretos ancestrales. Las montañas, majestuosas guardianas de la tierra, se
+                    alzaban imponentes en el horizonte, invitándome a ascender hacia lo desconocido. Siguiendo el rastro
+                    de estrellas fugaces, llegué a un lago de aguas cristalinas que reflejaba la luz de la luna como un
+                    manto plateado. En este viaje, descubrí que la verdadera magia reside en la capacidad de creer en lo
+                    imposible y encontrar belleza en cada rincón del universo.
+                </p>
             </div>
         </div>
+
+    </header>
+
+
+
+    <section class="menu-pl container"> 
+
+        <h2>Modificar mesas entrantes</h2>
+
+        <div class="general-content" id="tables_content">
+
+        </div>
+    </section>
+
+
+
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <p>Ingresa nuevo nombre de mesa</p>
+            <input type="text" id="nameInput">
+            <button id="submitName">Enviar</button>
+        </div>
     </div>
-    <!-- <div class="overlay"></div> -->
+
+    <!-- Esto ni idea de que es XD -->
+
     <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -108,7 +139,18 @@
     <!-- jQuery Custom Scroller CDN -->
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../../entities/dish.entity.js"></script>
+    <script src="../../services/dishes.service.js"></script>
+    <script src="../../entities/tables.entity.js"></script>
+    <script src="../../services/tables.service.js"></script>
     <script src="../../services/index.js"></script>
+
+    <script>
+        getTables()
+    </script>
+
 </body>
 
 </html>

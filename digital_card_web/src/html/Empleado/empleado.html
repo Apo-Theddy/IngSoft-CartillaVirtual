@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" 
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid&family=Poppins:wght@500&display=swap"
+        rel="stylesheet">
+        <!--Bootstrap CSS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
+        rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+         crossorigin="anonymous">
+    <!--Bootstrap icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">    
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Empleados</title>
+    <link rel="shortcut icon" href="../../imgs/Icono Jennifer.jpeg" type="image/x-icon">
+    <link rel="stylesheet" href="../../css/empleados_barra.css">
+    <link rel="stylesheet" href="../../css/empleado.css">
+    
+    
+</head>
+<body>
+    <!-- <div class="slider-barra">
+        <div class="contenido_logo">
+            <div class="logo">
+                <i class="fa-solid fa-utensils"></i>
+                <div class="nombre-logo">Bienvenido </div>
+            </div>
+            <i class='bx bx-menu' id="btn" style="color: #ff9f0d"></i>
+        </div>
+        <ul class="nav_lista">
+            <li>
+                <i class='bx bx-search-alt-2' style="color: #ff9f0d"></i>
+                <input type="text" placeholder="Buscar...">
+                <span class="tooltip">Buscar</span>
+            </li>
+            <li>
+                <a href="../index/index.html">
+                    <i class="fa-solid fa-house"></i>
+                    <span class="links-name">Inicio</span>
+                </a>
+                <span class="tooltip">Inicio</a></span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-chair'></i>
+                    <span class="links-name">Mesas</span>
+                </a>
+                <span class="tooltip">Mesas</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-dna"></i>
+                    <span class="links-name">Ordenes</span>
+                </a>
+                <span class="tooltip">Ordenes</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bxs-book'></i>
+                    <span class="links-name">Platillo</span>
+                </a>
+                <span class="tooltip">Platillo</span>
+            </li>
+            <li>
+                <a href="../chat/chat.html">
+                    <i class='bx bxs-trophy'></i>
+                    <span class="links-name">Chat</span>
+                </a>
+                <span class="tooltip">Chat</span>
+            </li>
+            <li>
+                <a href="../../html/Empleado/empleado.html">
+                    <i class='bx bx-money-withdraw'></i>
+                    <span class="links-name">Empledos</span>
+                </a>
+                <span class="tooltip">Empleados</span>
+            </li>
+
+        </ul>
+    </div>
+    <div class="overlay"></div> -->
+
+    <section class="p-3">
+        <div class="row">
+            <div class="col-12">
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#userForm"> Nuevo empleado <i class="bi bi-people"></i></button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-striped table-hover mt-3 text-center table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Empleado Id</th>
+                            <th>Imagen</th>
+                            <th>Nomnbre y apellidos</th>
+                            <th>Dni</th>
+                            <th>Documento</th>
+                            <th>Activo</th>
+                            <th>Fecha</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                        
+                    <tbody id="data">
+                        <tr>
+                            <td>1</td>
+                            <td><img src="../../imgs/logo.png" alt="" width="50" height="50"></td>
+                            <td>Jennifer Chileno</td>
+                            <td>74216344</td>
+                            <td>XD</td>
+                            <td>1</td>
+                            <td>24/10/2023</td>
+                            <td>
+                                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#readData">
+                                    <i class="bi bi-eye"></i></button>
+                                <button class="btn btn-primary"><i class="bi bi-pencil"></i></button>
+                                <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>2</td>
+                            <td><img src="../../imgs/logo.png" alt="" width="50" height="50"></td>
+                            <td>Jennifer Chileno</td>
+                            <td>74216344</td>
+                            <td>XD</td>
+                            <td>1</td>
+                            <td>24/10/2023</td>
+                            <td>
+                                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#readData">
+                                    <i class="bi bi-eye"></i></button>
+                                <button class="btn btn-primary"><i class="bi bi-pencil"></i></button>
+                                <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>3</td>
+                            <td><img src="../../imgs/logo.png" alt="" width="50" height="50"></td>
+                            <td>Jennifer Chileno</td>
+                            <td>74216344</td>
+                            <td>XD</td>
+                            <td>1</td>
+                            <td>24/10/2023</td>
+                            <td>
+                               <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#readData">
+                                    <i class="bi bi-eye"></i></button>
+                                <button class="btn btn-primary"><i class="bi bi-pencil"></i></button>
+                                <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!--Model Form-->
+    <div class="modal fade" id="userForm">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Completar Registro</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" arial-label="close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form action="#" id="myForm">
+                        <div class="card imgholder">
+                            <label for="imgInput" class="upload">
+                                <input type="file" name="" id="imgInput">
+                                <i class="bi bi-plus-circle"></i>
+                            </label>
+                            <img src="../../imgs/Perfil.jpeg" alt="" width="200" height="200" class="img">
+                        </div>
+
+                        <div class="inputField">
+                            <div>
+                                <label for="name">Nombre: </label>
+                                <input type="text" name="" id="name">
+                            </div>
+                            <div>
+                                <label for="dni">Dni: </label>
+                                <input type="text" name="" id="dni">
+                            </div>
+                            <div>
+                                <label for="tipo">Documento: </label>
+                                <input type="text" name="" id="tipo">
+                            </div>
+                            <div>
+                                <label for="sDate">Fecha: </label>
+                                <input type="date" name="" id="sDate">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" form="myForm" class="btn btn-primary submit">Agregar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--Read data modal-->
+    <div class="modal fade" id="readData">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Verificar Registro</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" arial-label="close"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <form action="#" id="myForm">
+
+                        <div class="card imgholder">
+                            <img src="../../imgs/Perfil.jpeg" alt="" width="200" height="200" class="showImg">
+                        </div>
+
+                        <div class="inputField">
+                            <div>
+                                <label for="name">Nombre: </label>
+                                <input type="text" name="" id="showName" disabled>
+                            </div>
+                            <div>
+                                <label for="dni">Dni: </label>
+                                <input type="text" name="" id="showDni" disabled>
+                            </div>
+                            <div>
+                                <label for="tipo">Documento: </label>
+                                <input type="text" name="" id="ShowTipo" disabled>
+                            </div>
+                            <div>
+                                <label for="sDate">Fecha: </label>
+                                <input type="date" name="" id="showsDate" disabled>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src="../../services/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
+    crossorigin="anonymous"></script>
+</body>
+</html>
