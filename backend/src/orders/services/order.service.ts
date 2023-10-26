@@ -40,8 +40,8 @@ export class OrderService {
     }
 
     async VerifyOrder(tableID: number, orderDishes: OrderDish[], employeeID: number): Promise<Order> {
-        let order = await this.orderRepository.findOne({ where: { Table: { TableID: tableID }, IsComplete: 0 } })
-        if (!order) {
+        let order = await this.orderRepository.findOne({ where: { IsComplete: 0, Table: { TableID: tableID } } })
+        if (order === null) {
             let [table, employee] = await Promise.all([
                 this.tableService.GetTable(tableID),
                 this.employeeService.GetEmployeeById(employeeID)
@@ -49,10 +49,7 @@ export class OrderService {
             let availableDishes = []
             let newOrder = this.orderRepository.create({ Table: table, Employee: employee })
             for (let orderDish of orderDishes) {
-                let orderItem = await Promise.all([
-                    this.validateOrderItem(orderDish.DishID, orderDish.Quantity),
-                    this.employeeService.GetEmployeeById(employeeID)
-                ]);
+                let orderItem = await this.validateOrderItem(orderDish.DishID, orderDish.Quantity)
                 availableDishes.push(orderItem)
                 newOrder.OrderItems = availableDishes
             }
