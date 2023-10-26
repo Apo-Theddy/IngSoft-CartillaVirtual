@@ -12,11 +12,11 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"><!--cnd icono-->
     <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid&family=Poppins:wght@500&display=swap"
         rel="stylesheet">
-    <title>J3nn1</title>
+    <title>Mesas</title>
     <link rel="shortcut icon" href="../../imgs/Icono Jennifer.jpeg" type="image/x-icon">
     <link rel="stylesheet" href="../../css/index-style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="../../css/platillos-style.css">
+    <link rel="stylesheet" href="../../css/mesas-style.css">
 </head>
 
 <body>
@@ -85,9 +85,9 @@
     <header class="header">
         <div class="header-content container">
             <div class="header-txt">
-                <h1>Modificar <br> <span>platillos y bebidas </span></h1>
+                <h1>Modificar <br> <span> mesas </span></h1>
                 <p>
-                    En un mundo donde los sueos se entrelazan con la realidad, emprendí un viaje que desafió los
+                    En un universoooo donde los sueos se entrelazan con la realidad, emprendí un viaje que desafió los
                     límites de lo conocido. Atravesé valles de ensueño, donde las flores danzaban al compás del viento y
                     los árboles murmuraban secretos ancestrales. Las montañas, majestuosas guardianas de la tierra, se
                     alzaban imponentes en el horizonte, invitándome a ascender hacia lo desconocido. Siguiendo el rastro
@@ -100,21 +100,28 @@
 
     </header>
 
-    <div id="popup" class="popup">
-        <div class="popup-content">
-            <span class="close" onclick="closePopup()">&times;</span>
-            <p>Contenido del popup aquí.</p>
-        </div>
-    </div>
 
-    <section class="menu-pl container">
 
-        <h2>Modificar platos entrantes</h2>
+    <section class="menu-pl container"> 
 
-        <div class="general-content" id="dishes_content">
+        <h2>Modificar mesas entrantes</h2>
+
+        <div class="general-content" id="tables_content">
 
         </div>
     </section>
+
+
+
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <p>Ingresa nuevo nombre de mesa</p>
+            <input type="text" id="nameInput">
+            <button id="submitName">Enviar</button>
+        </div>
+    </div>
+
     <!-- Esto ni idea de que es XD -->
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->
@@ -141,7 +148,7 @@
     <script src="../../services/index.js"></script>
 
     <script>
-        getDishs()
+        getTables()
     </script>
 
 </body>
