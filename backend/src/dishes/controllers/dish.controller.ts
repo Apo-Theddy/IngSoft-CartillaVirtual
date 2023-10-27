@@ -61,6 +61,17 @@ export class DishController {
         this.dishService.RemoveDish(id)
     }
 
+    @Delete(":dishID/:categoryID")
+    @ApiOperation({
+        summary: "Remove Category",
+        description: "Remove any category of dish"
+    })
+    RemoveCategoryDish(
+        @Param("dishID", ParseIntPipe) dishID: number,
+        @Param("categoryID", ParseIntPipe) categoryID: number) {
+        this.dishService.RemoveCategoryDish(dishID, categoryID);
+    }
+
     @Put()
     @ApiOperation({
         summary: "Update dish",

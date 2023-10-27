@@ -46,9 +46,8 @@ export class EventsGateway implements OnGatewayInit {
 
     @SubscribeMessage("AddOrder")
     async AddOrder(@MessageBody() body: CreateOrderDto) {
-        let { OrderDishes } = body;
         await this.orderService.AddOrder(body);
-        let dish = await this.dishService.GetDish(OrderDishes[0].DishID);
+        let dish = await this.dishService.GetDish(body.OrderDishes[0].DishID);
         this.server.emit("UpdateDish", dish);
     }
 

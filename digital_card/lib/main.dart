@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import "package:get/get.dart";
 import 'package:provider/provider.dart';
 
+int employeeID = 0;
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MainApp());
@@ -36,6 +37,7 @@ class MainApp extends StatelessWidget {
 
             Map<String, dynamic> data = snap.data;
             if (data["isLogin"]) {
+              employeeID = (data["employee"] as Employee).employeeID;
               return HomeScreen(employee: data["employee"]);
             }
             return const LoginScreen();

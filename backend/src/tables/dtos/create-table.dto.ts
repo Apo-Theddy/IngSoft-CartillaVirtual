@@ -4,7 +4,7 @@ import { IsString, IsNotEmpty } from "class-validator"
 export class CreateTableDto {
 
     @ApiProperty()
-    @IsString()
+        @IsString()
     @IsNotEmpty()
     TableName: string
 }

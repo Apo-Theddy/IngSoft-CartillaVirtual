@@ -1,5 +1,6 @@
 import 'package:digital_card/main.dart';
 import 'package:digital_card/models/create_order_model.dart';
+import 'package:digital_card/models/employee_model.dart';
 import 'package:digital_card/models/order_dish_model.dart';
 import 'package:digital_card/models/table_model.dart';
 import 'package:digital_card/screens/dish_content_screen.dart';

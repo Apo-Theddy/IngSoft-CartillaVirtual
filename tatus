@@ -1,0 +1,41 @@
+[33mcommit 6433a07b36277445c4d385bd28490ef36e0db8fe[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: apo-theddy <apotheddy@hotmail.com>
+Date:   Wed Oct 18 21:03:04 2023 -0500
+
+    Combinando repositorios actualizados
+
+[33mcommit d1f771738320ccc39985d945da3d1b6ec856ac25[m
+Author: apo-theddy <apotheddy@hotmail.com>
+Date:   Wed Oct 18 21:01:14 2023 -0500
+
+    Combinando repositorios y agregando nuevo diseno a la app
+
+[33mcommit 9c5afa14a3b7340721c10bf5f1bca8a94930bf0e[m
+Author: apo-theddy <apotheddy@hotmail.com>
+Date:   Wed Oct 11 12:02:30 2023 -0500
+
+    Se agregaron nuevas funcionalidades al backend y al aplicativo de telefono
+
+[33mcommit 0784e88b5dd2732e5dfa5dc1f012356b62f4fbb3[m
+Author: apo-theddy <apotheddy@hotmail.com>
+Date:   Sat Sep 30 15:55:16 2023 -0500
+
+    modificando la aplicacion
+
+[33mcommit 1299d4fbca6162561870c67d8e9f3248e5bc1db4[m
+Author: apo-theddy <apotheddy@hotmail.com>
+Date:   Wed Sep 27 21:44:37 2023 -0500
+
+    Agregando funciones al backend y conectando la aplicacion con el backend
+
+[33mcommit c194ac2a58d807da04b567be7c4fa8ca74935531[m
+Author: apo-theddy <apotheddy@hotmail.com>
+Date:   Wed Sep 20 22:30:21 2023 -0500
+
+    Agregando el backend y el aplicativo movil
+
+[33mcommit c79f44c8269bdc3d94def786eb5de14005a7b636[m
+Author: apo-theddy <apotheddy@hotmail.com>
+Date:   Sat Sep 16 22:07:26 2023 -0500
+
+    Commit inicial

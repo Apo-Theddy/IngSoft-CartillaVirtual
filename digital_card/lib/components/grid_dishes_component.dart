@@ -1,5 +1,6 @@
 import 'package:digital_card/cards/dish_cardV2.dart';
 import 'package:digital_card/models/dish_model.dart';
+import 'package:digital_card/models/employee_model.dart';
 import 'package:flutter/material.dart';
 
 class GridDishesComponent extends StatelessWidget {
