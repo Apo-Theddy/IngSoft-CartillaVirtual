@@ -7,8 +7,15 @@ table{
     margin: 0 auto;
 }
 
-
-
+body{
+    background: linear-gradient(to right, #b1bace, #929fba);
+}
+ h1{
+    color: #1C2331;
+    font-family: 'Righteous';
+    text-align: center;
+    
+ }
 td button{
     margin: 5px;
 }
