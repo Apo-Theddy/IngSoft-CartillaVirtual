@@ -1,11 +1,52 @@
 @import url("https://fonts.googleapis.com/css2?family=Righteous&family=Shantell+Sans:ital,wght@1,500&family=Work+Sans:wght@100;300;400;600;800&display=swap");
 
+/* .container {
+    max-width: 1200px;
+    margin: 0 auto;
+} */
+
 * {
-  margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Work Sans";
 }
+
+/* .header {
+    background-image: url(../imgs/bg.svg);
+    background-position: center bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    min-height: 70vh;
+    padding: 80px 0 0 0;
+}
+
+.header-content {
+    display: flex;
+}
+
+.header-txt {
+    width: 50%;
+}
+
+.header-txt h1 {
+    font-size: 70px;
+    line-height: 85px;
+    color: #ffffff;
+    margin-bottom: 200px;
+}
+
+.header-txt span {
+    font-size: 80px;
+    color: #ffb40b;
+}
+
+.header-txt p {
+    font-size: 16px;
+    color: #ffffff;
+    margin-bottom: 30px;
+} */
 
 :root{
     --Fondo: #558299;
@@ -37,7 +78,7 @@
     position: absolute;
 }
 
-.show-chatbot .chatbot-toggler i:first-child, 
+.show-chatbot .chatbot-toggler i:first-child,
 .chatbot-toggler i:last-child{
     opacity: 0;
 }
