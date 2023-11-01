@@ -26,13 +26,24 @@ btn.onclick = function () {
 }
 
 function showPopup() {
-    const popup = document.getElementById('popup');
+    const popup = document.getElementById('popup1');
     popup.style.display = 'block';
 }
 
 
 function closePopup() {
-    const popup = document.getElementById('popup');
+    const popup = document.getElementById('popup1');
+    popup.style.display = 'none';
+}
+
+function showPopup2() {
+    const popup = document.getElementById('popup2');
+    popup.style.display = 'block';
+}
+
+
+function closePopup2() {
+    const popup = document.getElementById('popup2');
     popup.style.display = 'none';
 }
 
@@ -54,7 +65,7 @@ function createDishComponent(dish) {
                     <p>${dish.description ?? "Sin Descripcion"}</p>
                     <div class="prices">
                         <span>S/ ${dish.unitPrice}</span>
-                        <a href="#" class="btn-2" onclick="showPopup()">Editar</a>
+                        <a href="#" class="btn-2" onclick="showPopup2('popup2')">Editar</a>
                     </div>
             </div>`;
 }

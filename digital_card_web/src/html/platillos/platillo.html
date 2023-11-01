@@ -89,32 +89,105 @@
                 <p>
                     En un mundo donde los sueos se entrelazan con la realidad, emprendí un viaje que desafió los
                     límites de lo conocido. Atravesé valles de ensueño, donde las flores danzaban al compás del viento y
-                    los árboles murmuraban secretos ancestrales. Las montañas, majestuosas guardianas de la tierra, se
-                    alzaban imponentes en el horizonte, invitándome a ascender hacia lo desconocido. Siguiendo el rastro
-                    de estrellas fugaces, llegué a un lago de aguas cristalinas que reflejaba la luz de la luna como un
-                    manto plateado. En este viaje, descubrí que la verdadera magia reside en la capacidad de creer en lo
-                    imposible y encontrar belleza en cada rincón del universo.
+                    los árboles murmuraban secretos ancestrales. Las montañas, 
                 </p>
             </div>
         </div>
 
     </header>
 
-    <div id="popup" class="popup">
-        <div class="popup-content">
-            <span class="close" onclick="closePopup()">&times;</span>
-            <p>Contenido del popup aquí.</p>
+    <section>
+        <div class="AgrePlatillo">
+            <button class="bton-cirular" onclick="showPopup('popup1')">+</button>
         </div>
-    </div>
+        <!-- Este es el model para el boton de agregar un platillo -->
+        <div id="popup1" class="popup">
+            <div class="popup-content">
+                <span class="close" onclick="closePopup('popup1')">&times;</span>
+                <div class="modeleditar">
+                    <div class="titulopop">Agregar un platillo</div>
+                    <form action="">
+                        <p>
+                            <label for="NombrePlato">Platillo :</label>
+                            <input type="text" name="nombreplatillo" id="nombreplatillo">
+                        </p>
+                        <p>
+                            <label for="Preciop">Precio :</label>
+                            <input type="number" name="preciop" id="preciop" min="0">
+                        </p>
+                        <p>
+                            <label for="cantidadp">Cantidad :</label>
+                            <input type="number" name="cantidadp" id="cantidadp" min="0">
+                        </p>
+                        <p>
+                            <label for="Categoriap">Cantegoria :</label>
+                            <input type="number" name="Categoriap" id="Categoriap" min="0">
+                        </p>
+                        <p class="block">
+                            <label for="Descripcionp">Descripción :</label>
+                            <textarea name="Descripcionp" rows="4"></textarea>
+                        </p>
+                        <p class="block">
+                            <button type="editarb">Editar</button>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Este es el model para el boton de para editar un platillo -->
+        <div id="popup2" class="popup">
+            <div class="popup-content">
+                <span class="close" onclick="closePopup2('popup2')">&times;</span>
+                <div class="modeleditar">
+                    <div class="titulopop">Editar</div>
+                    <form action="">
+                        <p>
+                            <label for="NombrePlato">Platillo :</label>
+                            <input type="text" name="nombreplatillo" id="nombreplatillo">
+                        </p>
+                        <p>
+                            <label for="Preciop">Precio :</label>
+                            <input type="number" name="preciop" id="preciop" min="0">
+                        </p>
+                        <p>
+                            <label for="cantidadp">Cantidad :</label>
+                            <input type="number" name="cantidadp" id="cantidadp" min="0">
+                        </p>
+                        <p>
+                            <label for="Categoriap">Cantegoria :</label>
+                            <input type="number" name="Categoriap" id="Categoriap" min="0">
+                        </p>
+                        <p class="block">
+                            <label for="Descripcionp">Descripción :</label>
+                            <textarea name="Descripcionp" rows="4"></textarea>
+                        </p>
+                        <p class="block">
+                            <button type="editarb">Editar</button>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section class="menu-pl container">
 
         <h2>Modificar platos entrantes</h2>
 
         <div class="general-content" id="dishes_content">
-
+            <!--<div class="general-txt" >
+                <img src=${verifyImage} " alt="">
+                    <h3>${dish.dishName}</h3>
+                    <p>${dish.description ?? "Sin Descripcion"}</p>
+                    <div class="prices">
+                        <span>S/ 15</span>
+                        <a href="#" class="btn-2" onclick="showPopup2('popup2')">Editar</a>
+                    </div>
+            </div>-->
         </div>
     </section>
+
+
     <!-- Esto ni idea de que es XD -->
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->
