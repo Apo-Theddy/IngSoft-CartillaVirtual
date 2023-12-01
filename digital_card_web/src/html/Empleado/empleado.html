@@ -89,7 +89,7 @@
     <section class="p-3">
         <div class="row">
             <div class="col-2"><!--Columnas-->
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#userForm"> Nuevo empleado 
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#userForm"> Nuevo Empleado 
                     <i class="bi bi-people"></i></button>
             </div>
         </div>
@@ -110,20 +110,6 @@
                     </thead>
                         
                     <tbody id="databody">
-                        <!-- <tr>
-                            <td>1</td>
-                            <td>Jennifer Chileno</td>
-                            <td>74216344</td>
-                            <td>XD</td>
-                            <td>1</td>
-                            <td>24/10/2023</td>
-                            <td>
-                                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#readData">
-                                    <i class="bi bi-eye"></i></button>
-                                <button class="btn btn-primary"><i class="bi bi-pencil"></i></button>
-                                <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                            </td>
-                        </tr> -->
                     </tbody>
                 </table>
             </div>
@@ -187,26 +173,27 @@
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Verificar Registro</h4>
+                    <h4 class="modal-title">Editar Registro</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" arial-label="close"></button>
                 </div>
 
                 <div class="modal-body">
 
                     <form action="#" id="myForm">
-
+                        <img src="../../imgs/Perfil.jpeg" alt="" width="200" height="200" class="img">
                         <div class="inputField">
+                            
                             <div>
                                 <label for="name">Nombre: </label>
-                                <input type="text" name="" id="showName" disabled>
+                                <input type="text" name="" id="showName" >
                             </div>
                             <div>
                                 <label for="Lastname">Ap. Paterno: </label>
-                                <input type="text" name="" id="Lastname" disabled>
+                                <input type="text" name="" id="showLastname" >
                             </div>
                              <div>
                                 <label for="Mothername">Ap. Materno: </label>
-                                <input type="text" name="" id="Mothername" disabled>
+                                <input type="text" name="" id="showMothername" >
                             </div>
                             <div>
                                 <label for="dni">Dni: </label>
@@ -214,20 +201,24 @@
                             </div>
                             <div>
                                 <label for="tipo">Documento: </label>
-                                <input type="text" name="" id="ShowTipo" disabled>
+                                <input type="text" name="" id="showTipo" >
                             </div>
-                            <div>
+                            <div>   
                                 <label for="sDate">Fecha: </label>
-                                <input type="date" name="" id="showsDate" disabled>
+                                <input type="text" name="" id="showDate" disabled>
                             </div>
                         </div>
                     </form>
+                </div>
+                <div class="modal-footer" >
+                    <button class="btn btn-primary submit" id="btnEditarEmpleado">Editar</button>
                 </div>
             </div>
 
         </div>
     </div>
 
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="../../services/index.js"></script>
     <script src="../../services/empleado.js"></script>
