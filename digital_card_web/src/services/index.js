@@ -88,31 +88,31 @@ function closePopup2() {
 }
 
 
-getDishes().then((dishes) => {
-    for (let i = 0; i < dishes.length; ++i) dishContent.innerHTML += createDishComponent(dishes[i])
-});
+// getDishes().then((dishes) => {
+//     for (let i = 0; i < dishes.length; ++i) dishContent.innerHTML += createDishComponent(dishes[i])
+// });
 
-btnAddDish.addEventListener("click", async (event) => {
-    event.preventDefault();
-    let DishName = document.getElementById("frmDishName").value
-    let UnitPrice = parseFloat(document.getElementById("frmUnitPrice").value)
-    let QuantityAvailable = parseInt(document.getElementById("frmQuantityAvailable").value)
-    let Description = document.getElementById("frmDescription").value.trim();
-    let data = { DishName, UnitPrice, QuantityAvailable, Description: Description === "" ? null : Description }
-    let dish = await addDish(data);
-    dishContent.innerHTML += createDishComponent(dish);
-})
+// btnAddDish.addEventListener("click", async (event) => {
+//     event.preventDefault();
+//     let DishName = document.getElementById("frmDishName").value
+//     let UnitPrice = parseFloat(document.getElementById("frmUnitPrice").value)
+//     let QuantityAvailable = parseInt(document.getElementById("frmQuantityAvailable").value)
+//     let Description = document.getElementById("frmDescription").value.trim();
+//     let data = { DishName, UnitPrice, QuantityAvailable, Description: Description === "" ? null : Description }
+//     let dish = await addDish(data);
+//     dishContent.innerHTML += createDishComponent(dish);
+// })
 
-function createDishComponent(dish) {
-    let verifyImage = dish["Images"] !== undefined && dish["Images"].length > 0 ? `http://localhost:3000/${dish.images[0].Path}` : "https://img.freepik.com/vector-premium/image-icon-vector-illustration-photo-on-isolated-background-gallery-sign-concept_993513-11.jpg";
-    return `<div class="general-txt">
-                <img src="${verifyImage}" alt="">
-                    <h3>${dish["DishName"]}</h3>
-                    <p>${dish["Description"] ?? "Sin Descripcion"}</p>
-                    <div class="prices">
-                        <span>S/ ${dish["UnitPrice"]}</span>
-                        <button class="btn-2" onclick="showEditPopUp('${dish["DishName"]}',${dish["UnitPrice"]},${dish["QuantityAvailable"]},${dish["Description"] === null ? "" : dish["Description"]})">Editar</button>
-                    </div>
-            </div>`;
-}
+// function createDishComponent(dish) {
+//     let verifyImage = dish["Images"] !== undefined && dish["Images"].length > 0 ? `http://localhost:3000/${dish.images[0].Path}` : "https://img.freepik.com/vector-premium/image-icon-vector-illustration-photo-on-isolated-background-gallery-sign-concept_993513-11.jpg";
+//     return `<div class="general-txt">
+//                 <img src="${verifyImage}" alt="">
+//                     <h3>${dish["DishName"]}</h3>
+//                     <p>${dish["Description"] ?? "Sin Descripcion"}</p>
+//                     <div class="prices">
+//                         <span>S/ ${dish["UnitPrice"]}</span>
+//                         <button class="btn-2" onclick="showEditPopUp('${dish["DishName"]}',${dish["UnitPrice"]},${dish["QuantityAvailable"]},${dish["Description"] === null ? "" : dish["Description"]})">Editar</button>
+//                     </div>
+//             </div>`;
+// }
 
