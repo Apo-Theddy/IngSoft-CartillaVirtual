@@ -211,7 +211,8 @@ class _DishContentScreenV2State extends State<DishContentScreenV2> {
       ),
       child: HorizontalSlidableButton(
         onChanged: (position) {
-          if (position == SlidableButtonPosition.end) {
+          if (position == SlidableButtonPosition.end &&
+              widget.dish.quantityAvailable! > 0) {
             showModalBottomSheet(
                 backgroundColor: const Color(0XFFFFFEFE),
                 context: context,

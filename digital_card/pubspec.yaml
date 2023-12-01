@@ -9,10 +9,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-dev_dependencies:
-  flutter_test:
-    sdk: flutter
   flutter_lints: ^2.0.0
   flutter_hooks: ^0.20.1
   awesome_bottom_bar: ^1.2.4
@@ -27,6 +23,11 @@ dev_dependencies:
   shared_preferences: ^2.2.1
   slidable_button: ^3.0.0+1
   salomon_bottom_bar: ^3.3.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
 
 flutter:
   uses-material-design: true

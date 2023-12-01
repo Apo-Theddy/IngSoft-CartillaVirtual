@@ -152,11 +152,18 @@ class _DishScreenState extends State<DishScreen> {
 
   updateNewDish() {
     socket.on("UpdateDish", (data) {
+      print("aea");
       if (mounted) {
         setState(() {
           data["Images"] = [];
           Dish dish = Dish.fromJson(data);
+          int inx =
+              dishes.indexWhere((element) => element.dishID == dish.dishID);
+          dishes.removeAt(inx);
+          if (isSelected) isSelected = false;
           dishes.add(dish);
+          currentDish = dish;
+          isSelected = true;
         });
         if (dishes.length > 10) scrollToLast();
       }

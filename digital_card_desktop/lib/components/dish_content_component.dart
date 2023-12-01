@@ -133,8 +133,11 @@ class _DishContentComponentState extends State<DishContentComponent> {
                     children: [
                       const Text("Cantidades disponibles: ",
                           style: TextStyle(fontSize: 20)),
-                      _buildTextOrTextField(_unitPriceController, 20,
-                          "${widget.dish.unitPrice}", "Precio del platillo"),
+                      _buildTextOrTextField(
+                          _unitPriceController,
+                          20,
+                          "${widget.dish.quantityAvailable}",
+                          "Precio del platillo"),
                     ],
                   ),
                 const SizedBox(height: 10),
