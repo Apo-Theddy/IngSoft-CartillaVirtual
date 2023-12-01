@@ -2,118 +2,94 @@ var form = document.getElementById("myForm"),
     imgInput = document.querySelector(".img"),
     file = document.getElementById("imgInput"),
     Username = document.getElementById("name"),
+    Lastname = document.getElementById("Lastname"),
+    Mothername = document.getElementById("Mothername"),
     dni = document.getElementById("dni"),
     tipo = document.getElementById("tipo"),
     sDate = document.getElementById("sDate"),
     submitBtn = document.querySelector(".submit"),
-    userInfo = document.getElementById("data")
+    userInfo = document.getElementById("data"),
+    tablaBody = document.getElementById("databody"),
+    showName = document.getElementById("showName"),
+    showLastname = document.getElementById("showLastname"),
+    showMothername = document.getElementById("showMothername"),
+    showDni = document.getElementById("showDni"),
+    showTipo = document.getElementById("showTipo"),
+    showDate = document.getElementById("showDate"),
+    btnEditarEmpleado = document.getElementById("btnEditarEmpleado")
 
-let getData = localStorage.getItem('userProfile') ? JSON.parse(localStorage.getItem("userProfile")) : []
-
-let isEdit = false, editId
-showInfo()
-
-file.onchange = function () {
-    if (file.files[0].size < 1000000) {
-        var fileReader = new FileReader();
-
-        fileReader.onload = function (e) {
-            imgUrl = e.target.result
-            imgInput.src = imgUrl
-        }
-        fileReader.readAsDataURL(file.files[0])
-    } else {
-        alert("El archivo es demasiado grande!")
+async function loadEmployees() {
+    const response = await axios.get("https://n24kmjvt-3000.brs.devtunnels.ms/api/employees")
+    let reponsedata = response.data
+    tablaBody.innerHTML = ''
+    for (let employee of reponsedata) {
+        tablaBody.innerHTML += createComponentDataBody(employee["EmployeeID"], employee["Dni"], employee["Names"], employee["Lastname"], employee["MotherLastname"], employee["DocumentType"], employee["CreationDate"], employee["IsActive"])
     }
 }
 
-function showInfo() {
-    document.querySelectorAll('.employeeDetails').forEach(info => info.remove())
-    getData.forEach((element, index) => {
-        let createElement = `<tr class="employeeDetails">
-            <td>${index + 1}</td>
-            <td><img src="${element.picture}" alt="" width="50" height="50"</td>
-            <td>${element.employeeName}</td>
-            <td>${element.employeeDni}</td>
-            <td>${element.employeeTipo}</td>
-            <td>${element.startDate}</td>
+loadEmployees()
 
-            <td>
-                <button class="btn btn-success" onclick="readInfo('${element.picture}','${element.employeeName}',
-                    '${element.employeeDni}','${element.employeeTipo}','${element.startDate}') 
-                    data-bs-toggle="modal" data-bs-target="#readData"><i class="bi bi-eye"></i></button>
-
-                <button class="btn btn-primary"onclick="editInfo(${index},'${element.picture}','${element.employeeName}',
-                '${element.employeeDni}','${element.employeeTipo}','${element.startDate}') "data-bs-toggle="modal" data-bs-target="#userForm">
-                <i class="bi bi-pencil"></i></button>
-
-                <button class="btn btn-danger" onclick ="deleteInfo(${index})"><i class="bi bi-trash"></i></button>
-            </td>
-
-        </tr>`
-
-        userInfo.innerHTML += createElement
-    })
-}
-showInfo()
-
-function readInfo(pic,name,dni,tip,sDate){
-    document.querySelector('.showImg').src = pic,
-    document.querySelector('#showName').value = name,
-    document.querySelector('#showDni').value = dni,
-    document.querySelector('#ShowTipo').value = tip,
-    document.querySelector('#showsDate').value = sDate
+function createComponentDataBody(EmployeeID, Dni, Names, Lastname, MotherLastname, DocumentType, CreationDate, IsActive) {
+    return `
+    <tr>
+        <td>${EmployeeID}</td>
+        <td>${Names} ${Lastname} ${MotherLastname}</td>
+        <td>${Dni}</td>
+        <td>${DocumentType}</td>
+        <td>${IsActive}</td>
+        <td>${CreationDate}</td>
+        <td>
+            <button class="btn btn-success" onclick = "readInfo('${Names}','${Lastname}','${MotherLastname}','${Dni}','${DocumentType}','${CreationDate}')" data-bs-toggle="modal" data-bs-target="#readData">
+             <i class="bi bi-pencil"></i></button>
+            <button class="btn btn-danger" onclick = "deleteInfo(${EmployeeID})"><i class="bi bi-trash"></i></button>
+         </td>
+          </tr>
+    `
 }
 
-function editInfo(pic,name,dni,tip,sDate){
-    isEdit = true
-    editId = index
-    imgInput.src = pic
-    Username.value=name
-    dni.value = dni
-    tipo.value = tip
-    sDate.value = sDate
+function readInfo(name, lastname, mothername, dni, tipo, creationdate) {
+    showName.value = name
+    showLastname.value = lastname
+    showMothername.value = mothername
+    showDni.value = dni
+    showTipo.value = tipo
+    showDate.value = creationdate
 
-    submitBtn.innerText = "Update"
-    modalTitle.innerText = "Cambiar datos"
 }
 
-function deleteInfo(index){
-    if(confirm("Estas seguro que quieres eliminar?")){
-        getData.splice(index,1)
-        localStorage.setItem("userProfile", JSON.stringify(getData))
-        showInfo()
-    }
-}
-
-form.addEventListener('submit', (e) => {
-    e.preventDefault()
-
+btnEditarEmpleado.addEventListener("click", async(e) => {
     const information = {
-        picture: imgInput.src == undefined ? "../../imgs/logo.png" : imgInput.src,
-        employeeName: Username.value,
-        employeeDni: dni.value,
-        employeeTipo: tipo.value,
-        startDate: sDate.value
+        "Dni": showDni.value,
+        "Names": showName.value,
+        "Lastname": showLastname.value,
+        "MotherLastname": showMothername.value,
+        "DocumentType": showTipo.value
     }
+    await axios.put(`https://n24kmjvt-3000.brs.devtunnels.ms/api/employees`, information)
+    loadEmployees()
+})
 
-    if (!isEdit) {
-        getData.push(information)
-    } else {
-        isEdit = false
-        getData[editId] = information
+async function deleteInfo(EmployeeID) {
+    if (confirm("Estas seguro que quieres eliminar?")) {
+        await axios.delete(`https://n24kmjvt-3000.brs.devtunnels.ms/api/employees/${EmployeeID}`)
+        loadEmployees()
     }
+}
 
-    localStorage.setItem('userProfile', JSON.stringify(getData))
+form.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    const information = {
+        "Dni": dni.value,
+        "Names": Username.value,
+        "Lastname": Lastname.value,
+        "MotherLastname": Mothername.value,
+        "DocumentType": tipo.value
+    }
 
     submitBtn.innerText = "Submit"
-    modalTitle.innerHtml = "Fill The Form"
-
-    showInfo()
 
     form.reset()
 
-    imgInput.src = "../../imgs/logo.png"
-    modal.style.display = "none"
-    document.querySelector(".modal-backdrop").remove()
+    await axios.post("https://n24kmjvt-3000.brs.devtunnels.ms/api/employees", information)
+    loadEmployees()
 })

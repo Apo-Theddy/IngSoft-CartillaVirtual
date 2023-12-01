@@ -38,54 +38,54 @@ function closePopup() {
     popup.style.display = 'none';
 }
 
-function showEditPopUp(...data) {
-    const popup = document.getElementById('popup2');
-    popup.style.display = 'block';
-    divEditar.innerHTML = `
-     <div class="titulopop">Editar</div>
-                    <form action="">
-                        <p>
-                            <label for="NombrePlato">Platillo :</label>
-                            <input type="text" name="nombreplatillo" id="frmEditDishName" value='${data[0]}'>
-                        </p>
-                        <p>
-                            <label for="Preciop">Precio :</label>
-                            <input type="number" name="preciop" id="frmEditUnitPrice" min="0" value='${data[1]}' >
-                        </p>
-                        <p>
-                            <label for="cantidadp">Cantidad :</label>
-                            <input type="number" name="cantidadp" id="frmEditQuantityAvailable" min="0"  value='${data[2]}'>
-                        </p>
-                        <p>
-                            <label for="Categoriap">Cantegoria :</label>
-                            <input type="number" name="Categoriap" id="frmEditCategory" min="0"> 
-                        </p>
-                        <p class="block">
-                            <label for="Descripcionp">Descripción :</label>
-                            <textarea id="frmEditDescription" name="Descripcionp" rows="4"></textarea value='${data[3]}'>
-                        </p>
-                        <p class="block">
-                            <button type="editarb" id="btnEditButton">Editar</button>
-                        </p>
-                    </form>`
+// function showEditPopUp(...data) {
+//     const popup = document.getElementById('popup2');
+//     popup.style.display = 'block';
+//     divEditar.innerHTML = `
+//      <div class="titulopop">Editar</div>
+//                     <form action="">
+//                         <p>
+//                             <label for="NombrePlato">Platillo :</label>
+//                             <input type="text" name="nombreplatillo" id="frmEditDishName" value='${data[0]}'>
+//                         </p>
+//                         <p>
+//                             <label for="Preciop">Precio :</label>
+//                             <input type="number" name="preciop" id="frmEditUnitPrice" min="0" value='${data[1]}' >
+//                         </p>
+//                         <p>
+//                             <label for="cantidadp">Cantidad :</label>
+//                             <input type="number" name="cantidadp" id="frmEditQuantityAvailable" min="0"  value='${data[2]}'>
+//                         </p>
+//                         <p>
+//                             <label for="Categoriap">Cantegoria :</label>
+//                             <input type="number" name="Categoriap" id="frmEditCategory" min="0"> 
+//                         </p>
+//                         <p class="block">
+//                             <label for="Descripcionp">Descripción :</label>
+//                             <textarea id="frmEditDescription" name="Descripcionp" rows="4"></textarea value='${data[3]}'>
+//                         </p>
+//                         <p class="block">
+//                             <button type="editarb" id="btnEditButton">Editar</button>
+//                         </p>
+//                     </form>`
 
-    const btnEdit = document.getElementById("btnEditButton");
-    btnEdit.addEventListener("click", (event) => {
-        event.preventDefault();
-        const DishName = document.getElementById("frmEditDishName").value
-        const UnitPrice = parseFloat(document.getElementById("frmEditUnitPrice").value)
-        const QuantityAvailable = parseInt(document.getElementById("frmEditQuantityAvailable").value)
-        const Description = document.getElementById("frmEditDescription").value.trim();
-        data = { DishName, UnitPrice, QuantityAvailable, Description };
-        console.log(data);
-    })
-}
+//     const btnEdit = document.getElementById("btnEditButton");
+//     btnEdit.addEventListener("click", (event) => {
+//         event.preventDefault();
+//         const DishName = document.getElementById("frmEditDishName").value
+//         const UnitPrice = parseFloat(document.getElementById("frmEditUnitPrice").value)
+//         const QuantityAvailable = parseInt(document.getElementById("frmEditQuantityAvailable").value)
+//         const Description = document.getElementById("frmEditDescription").value.trim();
+//         data = { DishName, UnitPrice, QuantityAvailable, Description };
+//         console.log(data);
+//     })
+// }
 
 
-function closePopup2() {
-    const popup = document.getElementById('popup2');
-    popup.style.display = 'none';
-}
+// function closePopup2() {
+//     const popup = document.getElementById('popup2');
+//     popup.style.display = 'none';
+// }
 
 
 // getDishes().then((dishes) => {
