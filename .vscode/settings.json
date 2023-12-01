@@ -1,3 +1,7 @@
 {
-    "liveServer.settings.port": 5502
+    "liveServer.settings.port": 5502,
+    "workbench.preferredHighContrastLightColorTheme": "Red",
+    "workbench.preferredLightColorTheme": "Community Material Theme Darker",
+    "workbench.colorTheme": "Default Dark Modern",
+    "workbench.preferredDarkColorTheme": "GitHub Dark Default"
 }

@@ -114,4 +114,9 @@ form .inputField > div input{
 #readData form .inputField > div input{
     color: #000;
     font-size: 18px;
+
+}
+#readData form .inputField > div label ::after{
+    content: "*";
+    color: red;
 }

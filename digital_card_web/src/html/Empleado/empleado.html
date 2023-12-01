@@ -46,21 +46,21 @@
                 <span class="tooltip">Inicio</a></span>
             </li>
             <li>
-                <a href="#">
+                <a href="../../html/mesas/mesas.html">
                     <i class='bx bx-chair'></i>
                     <span class="links-name">Mesas</span>
                 </a>
                 <span class="tooltip">Mesas</span>
             </li>
             <li>
-                <a href="#">
+                <a href="../../html/Ordenes/Ordenes.html">
                     <i class="fa-solid fa-dna"></i>
                     <span class="links-name">Ordenes</span>
                 </a>
                 <span class="tooltip">Ordenes</span>
             </li>
             <li>
-                <a href="#">
+                <a href="../../html/platillos/views/platillo.html">
                     <i class='bx bxs-book'></i>
                     <span class="links-name">Platillo</span>
                 </a>
@@ -100,7 +100,6 @@
                     <thead>
                         <tr>
                             <th>Empleado Id</th>
-                            <th>Imagen</th>
                             <th>Nomnbre y apellidos</th>
                             <th>Dni</th>
                             <th>Documento</th>
@@ -110,10 +109,9 @@
                         </tr>
                     </thead>
                         
-                    <tbody id="data">
-                        <tr>
+                    <tbody id="databody">
+                        <!-- <tr>
                             <td>1</td>
-                            <td><img src="../../imgs/logo.png" alt="" width="50" height="50"></td>
                             <td>Jennifer Chileno</td>
                             <td>74216344</td>
                             <td>XD</td>
@@ -125,39 +123,7 @@
                                 <button class="btn btn-primary"><i class="bi bi-pencil"></i></button>
                                 <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
                             </td>
-                        </tr>
-
-                        <tr>
-                            <td>2</td>
-                            <td><img src="../../imgs/logo.png" alt="" width="50" height="50"></td>
-                            <td>Jennifer Chileno</td>
-                            <td>74216344</td>
-                            <td>XD</td>
-                            <td>1</td>
-                            <td>24/10/2023</td>
-                            <td>
-                                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#readData">
-                                    <i class="bi bi-eye"></i></button>
-                                <button class="btn btn-primary"><i class="bi bi-pencil"></i></button>
-                                <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>3</td>
-                            <td><img src="../../imgs/logo.png" alt="" width="50" height="50"></td>
-                            <td>Jennifer Chileno</td>
-                            <td>74216344</td>
-                            <td>XD</td>
-                            <td>1</td>
-                            <td>24/10/2023</td>
-                            <td>
-                               <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#readData">
-                                    <i class="bi bi-eye"></i></button>
-                                <button class="btn btn-primary"><i class="bi bi-pencil"></i></button>
-                                <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                            </td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>
             </div>
@@ -189,16 +155,20 @@
                                 <input type="text" name="" id="name">
                             </div>
                             <div>
+                                <label for="Lastname">Ap. Paterno: </label>
+                                <input type="text" name="" id="Lastname">
+                            </div>
+                             <div>
+                                <label for="Mothername">Ap. Materno: </label>
+                                <input type="text" name="" id="Mothername" >
+                            </div>
+                            <div>
                                 <label for="dni">Dni: </label>
                                 <input type="text" name="" id="dni">
                             </div>
                             <div>
                                 <label for="tipo">Documento: </label>
                                 <input type="text" name="" id="tipo">
-                            </div>
-                            <div>
-                                <label for="sDate">Fecha: </label>
-                                <input type="date" name="" id="sDate">
                             </div>
                         </div>
                     </form>
@@ -225,14 +195,18 @@
 
                     <form action="#" id="myForm">
 
-                        <div class="card imgholder">
-                            <img src="../../imgs/Perfil.jpeg" alt="" width="200" height="200" class="showImg">
-                        </div>
-
                         <div class="inputField">
                             <div>
                                 <label for="name">Nombre: </label>
                                 <input type="text" name="" id="showName" disabled>
+                            </div>
+                            <div>
+                                <label for="Lastname">Ap. Paterno: </label>
+                                <input type="text" name="" id="Lastname" disabled>
+                            </div>
+                             <div>
+                                <label for="Mothername">Ap. Materno: </label>
+                                <input type="text" name="" id="Mothername" disabled>
                             </div>
                             <div>
                                 <label for="dni">Dni: </label>
@@ -254,8 +228,9 @@
         </div>
     </div>
 
-
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="../../services/index.js"></script>
+    <script src="../../services/empleado.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
     crossorigin="anonymous"></script>
