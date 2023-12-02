@@ -92,7 +92,7 @@
     border-radius: 10px;
     bottom: 0;
     right: 0;
-    
+
 }
 
 .btn-3 {
@@ -156,9 +156,12 @@
 
 /* Estilo para el botón "Enviar" en el popup */
 #submitName {
-    background-color: #007bff; /* Cambia el color de fondo a tu preferencia */
-    color: #fff; /* Cambia el color del texto a tu preferencia */
-    padding: 10px 20px; /* Ajusta el relleno (padding) según tus necesidades */
+    background-color: #007bff;
+    /* Cambia el color de fondo a tu preferencia */
+    color: #fff;
+    /* Cambia el color del texto a tu preferencia */
+    padding: 10px 20px;
+    /* Ajusta el relleno (padding) según tus necesidades */
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -166,7 +169,8 @@
 
 /* Estilo para el botón "Enviar" cuando se coloca el cursor encima (hover) */
 #submitName:hover {
-    background-color: #0056b3; /* Cambia el color de fondo al pasar el cursor por encima */
+    background-color: #0056b3;
+    /* Cambia el color de fondo al pasar el cursor por encima */
 }
 
 /* Estilo para el campo de entrada */
@@ -174,22 +178,96 @@
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    width: 100%; /* Ajusta el ancho según tus necesidades */
-    margin-bottom: 10px; /* Agrega un margen inferior de 10px para separar del botón */
+    width: 100%;
+    /* Ajusta el ancho según tus necesidades */
+    margin-bottom: 10px;
+    /* Agrega un margen inferior de 10px para separar del botón */
 }
 
 /* Estilo para el campo de entrada cuando se coloca el cursor encima (hover) */
 #nameInput:hover {
-    border-color: #007bff; /* Cambia el color del borde al pasar el cursor por encima */
+    border-color: #007bff;
+    /* Cambia el color del borde al pasar el cursor por encima */
 }
 
 .buttons {
-    margin-left: 50%; /* Coloca los botones a la derecha */
+    margin-left: 50%;
+    /* Coloca los botones a la derecha */
     display: flex;
-    gap: 10px; /* Espacio entre los botones */
+    gap: 10px;
+    /* Espacio entre los botones */
 }
 
 .table-content {
     display: flex;
     flex-direction: column;
+}
+
+.bton-cirular {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 65px;
+    height: 65px;
+    background-color: #007bff;
+    border-radius: 50%;
+    text-align: center;
+    color: white;
+    font-size: 24px;
+    line-height: 50px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.bton-cirular:hover {
+    background-color: #0056b3;
+}
+
+.modeleditar form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.modeleditar form .block {
+    grid-column: 1 / 3;
+}
+
+.modeleditar form p {
+    margin: 0;
+    padding: 1em;
+}
+
+.modeleditar form input,
+.modeleditar form button,
+.modeleditar form textarea {
+    width: 100%;
+    padding: 0.7em;
+    border: none;
+    background: none;
+    outline: 0;
+    border-bottom: 1px solid #ffb40b;
+}
+
+.modeleditar form button {
+    background: #ffb40b;
+    border: 0;
+    text-transform: uppercase;
+}
+
+.modeleditar form button:hover,
+.modeleditar form button:focus {
+    background: #ff6600;
+    transition: background-color 1s ease-out;
+    outline: 0;
+}
+
+.titulopop {
+    font-size: 28px;
+    font-weight: normal;
+    color: #ff6600;
+    background-color: #f2f2f2;
+    padding: 10px 20px;
+    text-align: 50px;
+    margin: 15px;
 }

@@ -100,50 +100,75 @@
 
     </header>
 
-    <section class="menu-pl container">
-        <h2>Modificar mesas entrantes</h2>
-        <div class="general-content" id="tables_content">
-            <div class="general-txt">
-                <img src="../../imgs/Mesa.jpeg" alt="">
-                <h3>Nombre</h3>
-                <p>Descripcion</p>
-                <button href="#" class="btn-2" onclick="showPopup2('popup2')">Eliminar</button>
-                <button href="#" class="btn-2" onclick="showPopup2('popup2')">Editar</button>
+    <!-- AGREGAR MESA -->
+    <section>
+        <div class="AgreMesa">
+            <button class="bton-cirular" onclick="showPopupMesa()">+</button>
+        </div>
+        <!-- Este es el model para el boton de agregar una mesa -->
+        <div id="popupMesa" class="popup">
+            <div class="popup-content">
+                <span class="close" onclick="closePopup('popupMesa')">&times;</span>
+                <div class="modeleditar">
+                    <div class="titulopop">Agregar Mesa</div>
+                    <form id="formMesa">
+                        <p>
+                            <label for="NombreMesa">Nombre :</label>
+                            <input required type="text" name="nombreMesa" id="nombreMesa">
+                        </p>
+                        <p class="block">
+                            <button id="btnAgregar">Agregar</button>
+                        </p>
+                    </form>
+                </div>
             </div>
         </div>
-    </section>
+
+        <section class="menu-pl container">
+            <h2>Modificar mesas entrantes</h2>
+            <div class="general-content" id="tables_content">
+                <div class="general-txt">
+                    <img src="../../imgs/Mesa.jpeg" alt="">
+                    <h3>Nombre</h3>
+                    <p>Descripcion</p>
+                    <button href="#" class="btn-2" onclick="showPopup2('popup2')">Eliminar</button>
+                    <button href="#" class="btn-2" onclick="showPopup2('popup2')">Editar</button>
+                </div>
+            </div>
+        </section>
 
 
-    <div id="popup" class="popup">
-        <div class="popup-content">
-            <span class="close" onclick="closePopup()">&times;</span>
-            <p>Ingresa nuevo nombre de mesa</p>
-            <input type="text" id="nameInput">
-            <button id="submitName">Enviar</button>
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <span class="close" onclick="closePopup()">&times;</span>
+                <p>Ingresa nuevo nombre de mesa</p>
+                <input type="text" id="nameInput">
+                <button id="submitName">Enviar</button>
+            </div>
         </div>
-    </div>
 
-    <!-- Esto ni idea de que es XD -->
+        <!-- Esto ni idea de que es XD -->
 
-    <!-- jQuery CDN - Slim version (=without AJAX) -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <!-- Popper.JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
-        integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
-        crossorigin="anonymous"></script>
-    <!-- Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
-        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
-        crossorigin="anonymous"></script>
-    <!-- jQuery Custom Scroller CDN -->
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+        <!-- Popper.JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+            integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+            crossorigin="anonymous"></script>
+        <!-- Bootstrap JS -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+            integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+            crossorigin="anonymous"></script>
+        <!-- jQuery Custom Scroller CDN -->
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="../../services/index.js"></script>
-    <script src="../../services/mesas.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="services/mesas_service.js"></script>
+        <script src="../../services/index.js"></script>
+        <script src="../../services/mesas.js"></script>
 </body>
 
 </html>

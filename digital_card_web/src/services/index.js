@@ -32,6 +32,12 @@ function showPopup() {
     popup.style.display = 'block';
 }
 
+function showPopupMesa() {
+    const popup = document.getElementById('popupMesa');
+    popup.style.display = 'block';
+}
+
+
 
 function closePopup() {
     const popup = document.getElementById('popup1');
@@ -58,7 +64,7 @@ function closePopup() {
 //                         </p>
 //                         <p>
 //                             <label for="Categoriap">Cantegoria :</label>
-//                             <input type="number" name="Categoriap" id="frmEditCategory" min="0"> 
+//                             <input type="number" name="Categoriap" id="frmEditCategory" min="0">
 //                         </p>
 //                         <p class="block">
 //                             <label for="Descripcionp">Descripción :</label>
