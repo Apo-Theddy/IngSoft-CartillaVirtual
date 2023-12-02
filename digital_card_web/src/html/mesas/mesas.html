@@ -100,17 +100,18 @@
 
     </header>
 
-
-
-    <section class="menu-pl container"> 
-
+    <section class="menu-pl container">
         <h2>Modificar mesas entrantes</h2>
-
         <div class="general-content" id="tables_content">
-
+            <div class="general-txt">
+                <img src="../../imgs/Mesa.jpeg" alt="">
+                <h3>Nombre</h3>
+                <p>Descripcion</p>
+                <button href="#" class="btn-2" onclick="showPopup2('popup2')">Eliminar</button>
+                <button href="#" class="btn-2" onclick="showPopup2('popup2')">Editar</button>
+            </div>
         </div>
     </section>
-
 
 
     <div id="popup" class="popup">
@@ -141,15 +142,7 @@
         src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="../../entities/dish.entity.js"></script>
-    <script src="../../services/dishes.service.js"></script>
-    <script src="../../entities/tables.entity.js"></script>
-    <script src="../../services/tables.service.js"></script>
     <script src="../../services/index.js"></script>
-
-    <script>
-        getTables()
-    </script>
 
 </body>
 
