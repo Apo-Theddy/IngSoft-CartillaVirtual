@@ -30,19 +30,12 @@
             <h2>Cocina</h2>
             <i class="fa-solid fa-xmark"></i>
         </header>
-        <ul class="chatbox">
-            <li class="chat incoming">
-                <i class='bx bxs-user-circle'></i>
-                <p>Hola<br> Como estás? XDDDDDDDD</p>
-            </li>
+        <ul class="chatbox" id="chatbox">
 
-            <li class="chat outgoing">
-                <p>Juan Jisus hoy mintió</p>
-            </li>
         </ul>
         <div class="chat-input">
-            <textarea placeholder="Enter a message..." required></textarea>
-            <i class='bx bx-send'></i>
+            <textarea placeholder="Enter a message..." required id="txaMessage"></textarea>
+            <i class='bx bx-send' id="btnSend"></i>
         </div>
     </div>
 
@@ -117,6 +110,7 @@
 
     </header> -->
     <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -131,7 +125,7 @@
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="../../services/index.js"></script>
-    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
     <script src="./chat.js"></script>
 </body>
 
