@@ -5,23 +5,57 @@ EDITAR NUEVA MESA
 ELIMINAR NUEVA MESA
 */
 
+var botonAgregar = document.getElementById("btnAgregar");
+var botonEditar = document.getElementById("botonEditar");
+var botonEliminar = document.getElementById("botonEliminar");
+var form = document.getElementById("formMesa");
 
-var form = document.getElementById("btnAgregar");
+
+/*  CARGA MESAS */
+async function cargaMesas() {
+    const response = await axios.get("http://localhost:3000/api/tables")
+    let reponsedata = response.data;
+    let container_2 = document.getElementById("container2");
 
 
+    container_2.innerHTML = ''
+    for (let table of reponsedata) {
+        console.log(table);
+        container_2.innerHTML += `<div class="general-txt">
+                        <img src="../../imgs/Mesa.jpeg" alt="">
+                        <h3>${table.TableName}</h3>
+                        <p>Mesa...</p>
+                        <button href="#" class="btn-2" onclick="showPopup2('popup2')" id="BotonEliminar" data-id="${table.TableID}">Eliminar</button>
+                        <button href="#" class="btn-2" onclick="showPopup2('popup2')" id="botonEditar" data-id="${table.TableID}">Editar</button>
+                    </div>`;
+    }
+}
 
-form.addEventListener('click', async (e) => {
+cargaMesas();
+
+
+/* AGREGAR */
+botonAgregar.addEventListener('click', async (e) => {
     e.preventDefault();
     let nombreMesa = document.getElementById("nombreMesa").value;
 
-    console.log(nombreMesa);
+    const information = { "TableName": nombreMesa, }
+    addTable(information);
 
-    //let information = { nombreMesa }
-    addTable(nombreMesa);
+    form.reset();
+})
+
+/* EDITAR */
+botonEditar.addEventListener("click", async (e) => {
+
+    let nombreMesa = document.getElementById("nombreMesa").value;
+    let id = document.getElementById("nombreMesa").value;
 
 
-    /*
-        //await axios.post("https://n24kmjvt-3000.brs.devtunnels.ms/api/tables", information)
-        await axios.post("http://localhost:3000/api/tables", information)
-    */
+    const information = {
+        "TableName": nombreMesa,
+        "TableID": nombreMesa,
+    }
+    await axios.put(`https://n24kmjvt-3000.brs.devtunnels.ms/api/employees`, information)
+    loadEmployees()
 })

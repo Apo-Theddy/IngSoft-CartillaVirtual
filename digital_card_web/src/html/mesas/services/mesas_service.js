@@ -13,7 +13,7 @@ const getTables = async () => {
 
 const addTable = async (data) => {
     try {
-        const response = await axios.post(URL, null, data);
+        const response = await axios.post(URL, data);
         alert("Mesa agregada correctamente");
         return response.data
     } catch (err) {
