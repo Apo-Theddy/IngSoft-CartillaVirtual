@@ -47,7 +47,7 @@ btnSend.addEventListener("click", (e) => {
 });
 
 async function getMessages() {
-    let response = await axios.get(`http://localhost:3000/api/messages?page=${page}`);
+    let response = await axios.get(`${apiurl}/messages?page=${page}`);
     messages = await response.data;
     if (messages.length < 10)
         hasMoreMessages = false

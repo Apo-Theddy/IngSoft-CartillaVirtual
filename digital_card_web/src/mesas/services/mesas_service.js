@@ -1,9 +1,6 @@
-const URL = "http://localhost:3000/api/tables";
-
-
 const getTables = async () => {
     try {
-        const response = await axios.get(URL);
+        const response = await axios.get(`${apiurl}/tables`);
         return response.data;
     } catch (err) {
         console.log(err);
@@ -13,7 +10,7 @@ const getTables = async () => {
 
 const addTable = async (data) => {
     try {
-        const response = await axios.post(URL, data);
+        const response = await axios.post(`${apiurl}/tables`, data);
         alert("Mesa agregada correctamente");
         return response.data
     } catch (err) {
@@ -23,7 +20,7 @@ const addTable = async (data) => {
 
 const updateTable = async (data) => {
     try {
-        const response = await axios.put(URL, data);
+        const response = await axios.put(`${apiurl}/tables`, data);
     } catch (err) {
         alert("Ocurrio un error al actualizar mesa");
     }

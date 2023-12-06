@@ -13,7 +13,7 @@ var form = document.getElementById("formMesa");
 
 /*  CARGA MESAS */
 async function cargaMesas() {
-    const response = await axios.get("http://localhost:3000/api/tables")
+    const response = await axios.get(`${apiurl}/tables`)
     let reponsedata = response.data;
     let container_2 = document.getElementById("container2");
 
@@ -56,6 +56,6 @@ botonEditar.addEventListener("click", async (e) => {
         "TableName": nombreMesa,
         "TableID": nombreMesa,
     }
-    await axios.put(`https://n24kmjvt-3000.brs.devtunnels.ms/api/employees`, information)
-    loadEmployees()
+    await axios.put(`${apiurl}/tables`, information)
+    cargaMesas()
 })

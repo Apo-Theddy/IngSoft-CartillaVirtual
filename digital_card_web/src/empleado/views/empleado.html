@@ -1,28 +1,29 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer">
     <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid&family=Poppins:wght@500&display=swap"
         rel="stylesheet">
-        <!--Bootstrap CSS-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
-        rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-         crossorigin="anonymous">
+    <!--Bootstrap CSS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!--Bootstrap icons-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Empleados</title>
     <link rel="shortcut icon" href="../../imgs/Icono Jennifer.jpeg" type="image/x-icon">
     <link rel="stylesheet" href="../../css/empleados_barra.css">
     <link rel="stylesheet" href="../../css/empleado.css">
 </head>
+
 <body>
     <div class="slider-barra">
         <div class="contenido_logo">
@@ -89,7 +90,7 @@
     <section class="p-3">
         <div class="row">
             <div class="col-2"><!--Columnas-->
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#userForm"> Nuevo Empleado 
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#userForm"> Nuevo Empleado
                     <i class="bi bi-people"></i></button>
             </div>
         </div>
@@ -108,7 +109,7 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                        
+
                     <tbody id="databody">
                     </tbody>
                 </table>
@@ -144,9 +145,9 @@
                                 <label for="Lastname">Ap. Paterno: </label>
                                 <input type="text" name="" id="Lastname">
                             </div>
-                             <div>
+                            <div>
                                 <label for="Mothername">Ap. Materno: </label>
-                                <input type="text" name="" id="Mothername" >
+                                <input type="text" name="" id="Mothername">
                             </div>
                             <div>
                                 <label for="dni">Dni: </label>
@@ -182,18 +183,18 @@
                     <form action="#" id="myForm">
                         <img src="../../imgs/Perfil.jpeg" alt="" width="200" height="200" class="img">
                         <div class="inputField">
-                            
+
                             <div>
                                 <label for="name">Nombre: </label>
-                                <input type="text" name="" id="showName" >
+                                <input type="text" name="" id="showName">
                             </div>
                             <div>
                                 <label for="Lastname">Ap. Paterno: </label>
-                                <input type="text" name="" id="showLastname" >
+                                <input type="text" name="" id="showLastname">
                             </div>
-                             <div>
+                            <div>
                                 <label for="Mothername">Ap. Materno: </label>
-                                <input type="text" name="" id="showMothername" >
+                                <input type="text" name="" id="showMothername">
                             </div>
                             <div>
                                 <label for="dni">Dni: </label>
@@ -201,16 +202,16 @@
                             </div>
                             <div>
                                 <label for="tipo">Documento: </label>
-                                <input type="text" name="" id="showTipo" >
+                                <input type="text" name="" id="showTipo">
                             </div>
-                            <div>   
+                            <div>
                                 <label for="sDate">Fecha: </label>
                                 <input type="text" name="" id="showDate" disabled>
                             </div>
                         </div>
                     </form>
                 </div>
-                <div class="modal-footer" >
+                <div class="modal-footer">
                     <button class="btn btn-primary submit" id="btnEditarEmpleado">Editar</button>
                 </div>
             </div>
@@ -219,11 +220,13 @@
     </div>
 
     </div>
+    <script src="../../services/constants/constants.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="../../services/index.js"></script>
     <script src="../../services/empleado.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
-    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>

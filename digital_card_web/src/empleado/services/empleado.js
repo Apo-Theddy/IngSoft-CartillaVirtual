@@ -19,7 +19,7 @@ var form = document.getElementById("myForm"),
     btnEditarEmpleado = document.getElementById("btnEditarEmpleado")
 
 async function loadEmployees() {
-    const response = await axios.get("https://n24kmjvt-3000.brs.devtunnels.ms/api/employees")
+    const response = await axios.get(`${apiurl}/employees`)
     let reponsedata = response.data
     tablaBody.innerHTML = ''
     for (let employee of reponsedata) {
@@ -57,7 +57,7 @@ function readInfo(name, lastname, mothername, dni, tipo, creationdate) {
 
 }
 
-btnEditarEmpleado.addEventListener("click", async(e) => {
+btnEditarEmpleado.addEventListener("click", async (e) => {
     const information = {
         "Dni": showDni.value,
         "Names": showName.value,
@@ -65,13 +65,13 @@ btnEditarEmpleado.addEventListener("click", async(e) => {
         "MotherLastname": showMothername.value,
         "DocumentType": showTipo.value
     }
-    await axios.put(`https://n24kmjvt-3000.brs.devtunnels.ms/api/employees`, information)
+    await axios.put(`${apiurl}/employees`, information)
     loadEmployees()
 })
 
 async function deleteInfo(EmployeeID) {
     if (confirm("Estas seguro que quieres eliminar?")) {
-        await axios.delete(`https://n24kmjvt-3000.brs.devtunnels.ms/api/employees/${EmployeeID}`)
+        await axios.delete(`${apiurl}/employees/${EmployeeID}`)
         loadEmployees()
     }
 }
@@ -85,11 +85,8 @@ form.addEventListener('submit', async (e) => {
         "MotherLastname": Mothername.value,
         "DocumentType": tipo.value
     }
-
-    submitBtn.innerText = "Submit"
-
     form.reset()
+    await axios.post(`${apiurl}/employees`, information)
 
-    await axios.post("https://n24kmjvt-3000.brs.devtunnels.ms/api/employees", information)
     loadEmployees()
 })

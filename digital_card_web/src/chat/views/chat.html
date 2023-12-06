@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,14 +11,35 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"><!--cnd icono-->
     <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid&family=Poppins:wght@500&display=swap"
         rel="stylesheet">
-    <title>J3nn1</title>
+    <title>Chat</title>
     <link rel="shortcut icon" href="../../imgs/Icono Jennifer.jpeg" type="image/x-icon">
-    <link rel="stylesheet" href="../../../css/index-style.css">
+    <link rel="stylesheet" href="../../css/style4.css">
+    <link rel="stylesheet" href="../../css/index-style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="./styles/platillos-style.css">
+    <script src="../../services/script.js" defer></script>
 </head>
 
-<body>
+<body class="show-chatbot">
+    <button class="chatbot-toggler">
+        <i class="fa-regular fa-message fa-flip"></i>
+        <i class="fa-solid fa-xmark fa-flip"></i>
+    </button>
+
+    <div class="chatbot">
+        <header>
+            <h2>Cocina</h2>
+            <i class="fa-solid fa-xmark"></i>
+        </header>
+        <ul class="chatbox" id="chatbox">
+
+        </ul>
+        <div class="chat-input">
+            <textarea placeholder="Enter a message..." required id="txaMessage"></textarea>
+            <i class='bx bx-send' id="btnSend"></i>
+        </div>
+    </div>
+
+
     <div class="slider-barra"><!--todo lo que contiene la barra lateral-->
         <div class="contenido_logo"><!--Logo-->
             <div class="logo">
@@ -42,21 +62,21 @@
                 <span class="tooltip">Inicio</a></span><!--Nombre saliente-->
             </li>
             <li>
-                <a href="#">
+                <a href="../mesas/mesas.html">
                     <i class='bx bx-chair'></i>
                     <span class="links-name">Mesas</span>
                 </a>
                 <span class="tooltip">Mesas</span>
             </li>
             <li>
-                <a href="../../html/Ordenes/Ordenes.html">
+                <a href="../Ordenes/Ordenes.html">
                     <i class="fa-solid fa-dna"></i>
                     <span class="links-name">Ordenes</span>
                 </a>
                 <span class="tooltip">Ordenes</span>
             </li>
             <li>
-                <a href="#">
+                <a href="../platillos/views/platillo.html">
                     <i class='bx bxs-book'></i>
                     <span class="links-name">Platillo</span>
                 </a>
@@ -80,92 +100,19 @@
         </ul>
     </div>
     <div class="overlay"></div>
-    <!---->
-    <!--Contenido del menú -->
-    <header class="header">
+
+    <!-- <header class="header">
         <div class="header-content container">
             <div class="header-txt">
-                <h1>Modificar <br> <span>platillos y bebidas </span></h1>
-                <p>
-                    En un mundo donde los sueos se entrelazan con la realidad, emprendí un viaje que desafió los
-                    límites de lo conocido. Atravesé valles de ensueño, donde las flores danzaban al compás del viento y
-                    los árboles murmuraban secretos ancestrales. Las montañas,
-                </p>
+                <h1>Conversacion <br> <span>del restaurante </span></h1>
             </div>
         </div>
 
-    </header>
-
-    <section>
-        <div class="AgrePlatillo">
-            <button class="bton-cirular" onclick="showPopup()">+</button>
-        </div>
-        <!-- Este es el model para el boton de agregar un platillo -->
-        <div id="popup1" class="popup">
-            <div class="popup-content">
-                <span class="close" onclick="closePopup('popup1')">&times;</span>
-                <div class="modeleditar">
-                    <div class="titulopop">Agregar un platillo</div>
-                    <form>
-                        <p>
-                            <label for="NombrePlato">Platillo :</label>
-                            <input required type="text" name="nombreplatillo" id="frmDishName">
-                        </p>
-                        <p>
-                            <label for="Preciop">Precio :</label>
-                            <input required type="number" name="preciop" id="frmUnitPrice" min="0">
-                        </p>
-                        <p>
-                            <label for="cantidadp">Cantidad :</label>
-                            <input required type="number" name="cantidadp" id="frmQuantityAvailable" min="0">
-                        </p>
-                        <p>
-                            <label for="Categoriap">Cantegoria :</label>
-                            <input type="number" name="Categoriap" id="frmCategory" min="0">
-                        </p>
-                        <p class="block">
-                            <label for="Descripcionp">Descripción :</label>
-                            <textarea id="frmDescription" name="Descripcionp" rows="4"></textarea>
-                        </p>
-                        <p class="block">
-                            <button type="editarb" id="btnAddDish">Agregar</button>
-                        </p>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!-- Este es el model para el boton de para editar un platillo -->
-        <div id="popup2" class="popup">
-            <div class="popup-content">
-                <span class="close" onclick="closePopup2()">&times;</span>
-                <div id="divEditar" class="modeleditar">
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="menu-pl container">
-
-        <h2>Modificar platos entrantes</h2>
-
-        <div class="general-content" id="dishes_content">
-            <!--<div class="general-txt" >
-                <img src=${verifyImage} " alt="">
-                    <h3>${dish.dishName}</h3>
-                    <p>${dish.description ?? "Sin Descripcion"}</p>
-                    <div class="prices">
-                        <span>S/ 15</span>
-                        <a href="#" class="btn-2" onclick="showPopup2('popup2')">Editar</a>
-                    </div>
-            </div>-->
-        </div>
-    </section>
-
-
-    <!-- Esto ni idea de que es XD -->
-
+    </header> -->
     <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="../../services/constants/constants.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -177,17 +124,11 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
         integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
         crossorigin="anonymous"></script>
-    <!-- jQuery Custom Scroller CDN -->
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="../services/dishes_service.js"></script>
-    <script src="../../../services/index.js"></script>
-
-    <script>
-    </script>
-
+    <script src="../../services/index.js"></script>
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script src="./chat.js"></script>
 </body>
 
 </html>
