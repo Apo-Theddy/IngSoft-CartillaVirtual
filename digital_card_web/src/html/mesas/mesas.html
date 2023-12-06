@@ -17,6 +17,15 @@
     <link rel="stylesheet" href="../../css/index-style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="../../css/mesas-style.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css" />
+    <!-- Semantic UI theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css" />
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css" />
 </head>
 
 <body>
@@ -103,7 +112,8 @@
     <!-- AGREGAR MESA -->
     <section>
         <div class="AgreMesa">
-            <button class="bton-cirular" onclick="showPopupMesa()">+</button>
+            <!--<button class="bton-cirular" onclick="showPopupMesa()">+</button> -->
+            <button class="bton-cirular" id="botonAgregar">+</button>
         </div>
         <!-- Este es el model para el boton de agregar una mesa -->
         <div id="popupMesa" class="popup">
@@ -132,7 +142,7 @@
                         <img src="../../imgs/Mesa.jpeg" alt="">
                         <h3>Nombre</h3>
                         <p>Descripcion</p>
-                        <button href="#" class="btn-2" onclick="showPopup2('popup2')">Eliminar</button>
+                        <button href="#" class="btn-2" onclick="showPopup2('popup2')">Eliminarrr</button>
                         <button href="#" class="btn-2" onclick="showPopup2('popup2')" id="botonEditar"
                             data-id="">Editar</button>
                     </div>
@@ -169,6 +179,7 @@
         <!-- jQuery Custom Scroller CDN -->
         <script
             src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="services/mesas_service.js"></script>

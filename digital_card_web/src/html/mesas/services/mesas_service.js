@@ -23,8 +23,18 @@ const addTable = async (data) => {
 
 const updateTable = async (data) => {
     try {
+        console.log(data);
         const response = await axios.put(URL, data);
+        console.log(response);
     } catch (err) {
         alert("Ocurrio un error al actualizar mesa");
+    }
+}
+
+const deleteTable = async (data) => {
+    try {
+        const response = await axios.delete(`${URL}/${data.TableID}`);
+    } catch (err) {
+        alert("Ocurrio un error al eliminar mesa");
     }
 }
