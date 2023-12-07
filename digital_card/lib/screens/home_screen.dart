@@ -22,9 +22,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // final currentIndex = useState<int>(0);
-    // final pageController = usePageController(initialPage: currentIndex.value);
-
     return Scaffold(
       backgroundColor: const Color(0XFFFFFEFE),
       drawer: Drawer(

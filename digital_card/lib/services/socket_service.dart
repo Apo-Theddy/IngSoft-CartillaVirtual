@@ -2,7 +2,6 @@ import "dart:convert";
 
 import "package:digital_card/constants/contants_vars.dart";
 import "package:digital_card/models/dish_model.dart";
-import "package:digital_card/screens/dishes_screen.dart";
 import "package:flutter/material.dart";
 import "package:socket_io_client/socket_io_client.dart" as IO;
 
