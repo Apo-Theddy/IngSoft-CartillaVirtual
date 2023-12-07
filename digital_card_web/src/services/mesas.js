@@ -66,7 +66,6 @@ async function handleClick(boton) {
         }
     });
 }
-
 // Función para manejar el clic
 async function handleEditar(boton) {
     alertify.prompt('Editar Mesa', 'Ingrese nuevo nombre de mesa', ''
